@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=12 format=3 uid="uid://bhjqyr641p88q"]
+=======
+[gd_scene load_steps=11 format=3 uid="uid://totlliyw1fen"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://b50c7otsrc8f6" path="res://Assets/Fish.png" id="1_0l0pj"]
 [ext_resource type="Script" path="res://Script/fish.gd" id="1_phlq8"]
