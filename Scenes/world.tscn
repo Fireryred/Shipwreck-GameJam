@@ -8,12 +8,12 @@
 [node name="Ship" parent="." instance=ExtResource("1_4tq6a")]
 position = Vector2(860, 112)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="BG" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BG"]
 motion_mirroring = Vector2(65, 65)
 
-[node name="Bg" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Bg" type="Sprite2D" parent="BG/ParallaxLayer"]
 position = Vector2(1920, 1060)
 texture = ExtResource("3_6tga8")
 metadata/_edit_lock_ = true
