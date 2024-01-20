@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bjee62df400qo" path="res://Assets/Rudder.png" id="2_ahkmj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ul7cw"]
-radius = 31.0
-height = 152.0
+radius = 150.0
+height = 580.0
 
 [node name="Ship" type="CharacterBody2D"]
 script = ExtResource("1_pjglu")

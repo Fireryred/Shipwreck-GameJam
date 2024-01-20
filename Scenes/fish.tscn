@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhjqyr641p88q"]
+[gd_scene load_steps=12 format=3 uid="uid://bhjqyr641p88q"]
 
 [ext_resource type="Texture2D" uid="uid://b50c7otsrc8f6" path="res://Assets/Fish.png" id="1_0l0pj"]
+[ext_resource type="Script" path="res://Script/fish.gd" id="1_phlq8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0osj5"]
+radius = 45.0
+height = 130.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ef552"]
 atlas = ExtResource("1_0l0pj")
@@ -88,14 +91,18 @@ _data = {
 }
 
 [node name="Fish" type="CharacterBody2D"]
+script = ExtResource("1_phlq8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0osj5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_26gao")
 animation = &"Idle"
 frame = 1
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

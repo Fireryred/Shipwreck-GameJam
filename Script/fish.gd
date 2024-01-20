@@ -1,15 +1,20 @@
 extends CharacterBody2D
 
-@export var max_speed = 300
+@onready var anim = get_node("AnimatedSprite2D")
+@export var max_speed = 50
 @export_range(0, 10, 0.1) var drag_factor := 0.1
 
+var player
 var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
 
+func _ready():
+	anim.play("Idle")
+
 func _physics_process(delta):
-	#get input
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	#movement speed
+	player = get_node("../Ship")
+	var direction = (player.position - self.position).normalized()
+	
 	desired_velocity = direction * max_speed
 	
 	#Smooth turns
