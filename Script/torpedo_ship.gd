@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var acceleration := 5
 @export_range(0, 10, 0.1) var drag_factor := 0.1
 
-var player
+var player 
 var speed := 0
 var angle := Vector2.ZERO
 

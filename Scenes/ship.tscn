@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://joogv4uips5l"]
+[gd_scene load_steps=7 format=3 uid="uid://joogv4uips5l"]
 
 [ext_resource type="Script" path="res://Script/ship.gd" id="1_pjglu"]
 [ext_resource type="Texture2D" uid="uid://km8m4lwf8a2g" path="res://Assets/Ship Body.png" id="1_vxror"]
 [ext_resource type="Texture2D" uid="uid://bjee62df400qo" path="res://Assets/Rudder.png" id="2_ahkmj"]
+[ext_resource type="PackedScene" uid="uid://f5p8vwxw85or" path="res://Scenes/cannon.tscn" id="4_ly8cj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ul7cw"]
 radius = 150.0
@@ -39,3 +40,6 @@ texture = ExtResource("2_ahkmj")
 rotation = 3.14159
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_vxror")
+
+[node name="Cannon" parent="." instance=ExtResource("4_ly8cj")]
+position = Vector2(19, 0)

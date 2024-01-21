@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Script/fish.gd" id="1_phlq8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0osj5"]
-radius = 9.04998e-05
-height = 0.000181
+radius = 25.0
+height = 50.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ef552"]
 atlas = ExtResource("1_0l0pj")

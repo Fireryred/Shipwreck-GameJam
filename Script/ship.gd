@@ -22,3 +22,4 @@ func _physics_process(delta):
 	rotation = velocity.angle()
 	
 	move_and_slide()
+	
