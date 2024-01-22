@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [display]
 
-mouse_cursor/custom_image="res://Assets/HUD/Second Selector HUD.png"
+mouse_cursor/custom_image="res://Assets/Cannon Cursor 39.png"
+mouse_cursor/custom_image_hotspot=Vector2(20, 20)
 
 [dotnet]
 

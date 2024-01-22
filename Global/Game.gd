@@ -1,4 +1,3 @@
 extends Node
 
-var playerHp = 0
-
+var playerHp = 100
