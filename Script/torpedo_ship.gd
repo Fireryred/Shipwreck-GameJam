@@ -22,8 +22,7 @@ func _physics_process(delta):
 	#rotate to direction
 	rotation = velocity.angle()
 	move_and_slide()
-
-
+	
 func _on_torpedo_collision_body_entered(body):
 	if body.name == "Ship":
 		body.health -= .02 * speed

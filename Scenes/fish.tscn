@@ -1,7 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhjqyr641p88q"]
+[gd_scene load_steps=14 format=3 uid="uid://bhjqyr641p88q"]
 
 [ext_resource type="Texture2D" uid="uid://b50c7otsrc8f6" path="res://Assets/Fish.png" id="1_0l0pj"]
 [ext_resource type="Script" path="res://Script/fish.gd" id="1_phlq8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0osj5"]
+radius = 25.0
+height = 150.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ef552"]
 atlas = ExtResource("1_0l0pj")
@@ -90,13 +94,18 @@ _data = {
 radius = 49.9999
 height = 100.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0osj5"]
-radius = 25.0
-height = 150.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f3orc"]
+radius = 4.0
+height = 10.0
 
 [node name="Fish" type="CharacterBody2D"]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_phlq8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 0)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CapsuleShape2D_0osj5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 3.14159
@@ -111,19 +120,26 @@ libraries = {
 "": SubResource("AnimationLibrary_86f3a")
 }
 
-[node name="FishCollision" type="Area2D" parent="."]
+[node name="FishHitbox" type="Area2D" parent="."]
 scale = Vector2(5, 5)
+collision_layer = 0
+monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FishCollision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishHitbox"]
 position = Vector2(2, 0)
 rotation = 1.5708
 scale = Vector2(0.04, 0.04)
 shape = SubResource("CapsuleShape2D_ko2ss")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 0)
-scale = Vector2(0.2, 0.2)
-shape = SubResource("CapsuleShape2D_0osj5")
+[node name="FishHurtbox" type="Area2D" parent="."]
+scale = Vector2(5, 5)
+collision_layer = 2
+collision_mask = 0
+monitoring = false
 
-[connection signal="body_entered" from="FishCollision" to="." method="_on_fish_collision_body_entered"]
-[connection signal="body_exited" from="FishCollision" to="." method="_on_fish_collision_body_exited"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishHurtbox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f3orc")
+
+[connection signal="body_entered" from="FishHitbox" to="." method="_on_fish_collision_body_entered"]
+[connection signal="body_exited" from="FishHitbox" to="." method="_on_fish_collision_body_exited"]

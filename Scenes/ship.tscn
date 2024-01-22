@@ -22,9 +22,11 @@ rotation = -1.5708
 scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_ul7cw")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="ShipHurtbox" type="Area2D" parent="."]
+collision_mask = 0
+monitoring = false
 
-[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="ShipHurtbox"]
 position = Vector2(-4, 0)
 rotation = -1.5708
 scale = Vector2(0.2, 0.2)

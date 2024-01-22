@@ -13,8 +13,12 @@ script = ExtResource("1_4nmpy")
 [node name="CannonBall" type="Sprite2D" parent="."]
 texture = ExtResource("1_o0e3e")
 
-[node name="CannonCollision" type="Area2D" parent="."]
+[node name="CannonHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CannonCollision"]
-visibility_layer = 0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CannonHitbox"]
 shape = SubResource("CircleShape2D_v0d7c")
+
+[connection signal="area_entered" from="CannonHitbox" to="." method="_on_cannon_hitbox_area_entered"]

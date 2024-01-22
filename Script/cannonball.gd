@@ -10,3 +10,6 @@ func _ready():
 	
 func _physics_process(delta):
 	position += direction * speed * delta
+
+func _on_cannon_hitbox_area_entered(area):
+	queue_free()
