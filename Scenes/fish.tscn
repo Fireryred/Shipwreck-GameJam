@@ -3,10 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://b50c7otsrc8f6" path="res://Assets/Fish.png" id="1_0l0pj"]
 [ext_resource type="Script" path="res://Script/fish.gd" id="1_phlq8"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0osj5"]
-radius = 25.0
-height = 50.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ef552"]
 atlas = ExtResource("1_0l0pj")
 region = Rect2(0, 0, 212, 160)
@@ -94,16 +90,13 @@ _data = {
 radius = 49.9999
 height = 100.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0osj5"]
+radius = 25.0
+height = 150.0
+
 [node name="Fish" type="CharacterBody2D"]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_phlq8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visibility_layer = 0
-position = Vector2(2.84217e-14, 0)
-rotation = 1.5708
-scale = Vector2(0.2, 0.2)
-shape = SubResource("CapsuleShape2D_0osj5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 3.14159
@@ -122,10 +115,15 @@ libraries = {
 scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishCollision"]
-position = Vector2(-2.38419e-07, -6.82121e-13)
+position = Vector2(2, 0)
 rotation = 1.5708
 scale = Vector2(0.04, 0.04)
 shape = SubResource("CapsuleShape2D_ko2ss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 0)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CapsuleShape2D_0osj5")
 
 [connection signal="body_entered" from="FishCollision" to="." method="_on_fish_collision_body_entered"]
 [connection signal="body_exited" from="FishCollision" to="." method="_on_fish_collision_body_exited"]
