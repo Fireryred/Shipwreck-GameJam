@@ -10,7 +10,7 @@ var health = 100
 
 func _physics_process(delta):
 	#get input
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = Input.get_vector("left", "right", "up", "down")
 	#movement speed
 	desired_velocity = direction * max_speed
 	

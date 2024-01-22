@@ -18,10 +18,6 @@ position = Vector2(1920, 1060)
 texture = ExtResource("3_6tga8")
 metadata/_edit_lock_ = true
 
-[node name="Fish" parent="." instance=ExtResource("3_477q0")]
-position = Vector2(528, 353)
-scale = Vector2(1, 1)
-
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = 388.0
 offset_top = 20.0
@@ -31,8 +27,12 @@ value = 100.0
 show_percentage = false
 script = ExtResource("4_00wag")
 
-[node name="TorpedoShip" parent="." instance=ExtResource("5_if0t7")]
-position = Vector2(-590, 774)
-
 [node name="Ship" parent="." instance=ExtResource("1_4tq6a")]
 position = Vector2(956, 200)
+
+[node name="Fish" parent="." instance=ExtResource("3_477q0")]
+position = Vector2(593, 315)
+scale = Vector2(1, 1)
+
+[node name="TorpedoShip" parent="." instance=ExtResource("5_if0t7")]
+position = Vector2(400, 365)
