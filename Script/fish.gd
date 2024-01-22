@@ -39,4 +39,7 @@ func _on_fish_hitbox_exited(body):
 	onCollide = false
 	velocity = velocity.normalized()
 	move_and_slide()
-	
+
+func _on_fish_hurtbox_area_entered(area):
+	print(area.name)
+	queue_free()
