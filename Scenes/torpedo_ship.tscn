@@ -60,7 +60,6 @@ shape = SubResource("CapsuleShape2D_k27uq")
 
 [node name="TorpedoHitbox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TorpedoHitbox"]
@@ -82,3 +81,4 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_k27uq")
 
 [connection signal="body_entered" from="TorpedoHitbox" to="." method="_on_torpedo_collision_body_entered"]
+[connection signal="area_entered" from="TorpedoHurtbox" to="." method="_on_torpedo_hurtbox_area_entered"]

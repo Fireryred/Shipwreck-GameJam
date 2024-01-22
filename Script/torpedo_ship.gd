@@ -27,3 +27,6 @@ func _on_torpedo_collision_body_entered(body):
 	if body.name == "Ship":
 		body.health -= .02 * speed
 		queue_free()
+
+func _on_torpedo_hurtbox_area_entered(area):
+	pass # Replace with function body.
