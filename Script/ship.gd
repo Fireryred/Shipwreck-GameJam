@@ -6,7 +6,7 @@ extends CharacterBody2D
 var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
 
-var health = 100
+var health = Game.playerHp
 
 func _physics_process(delta):
 	#get input

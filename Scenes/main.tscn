@@ -6,17 +6,17 @@
 script = ExtResource("1_gfk5u")
 
 [node name="Play" type="Button" parent="."]
-offset_left = 594.0
-offset_top = 348.0
-offset_right = 856.0
-offset_bottom = 411.0
+offset_left = 438.0
+offset_top = 340.0
+offset_right = 700.0
+offset_bottom = 403.0
 text = "Play"
 
 [node name="Quit" type="Button" parent="."]
-offset_left = 594.0
-offset_top = 471.0
-offset_right = 856.0
-offset_bottom = 534.0
+offset_left = 438.0
+offset_top = 463.0
+offset_right = 700.0
+offset_bottom = 526.0
 text = "Quit
 "
 

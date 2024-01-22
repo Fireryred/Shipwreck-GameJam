@@ -27,7 +27,7 @@ func _physics_process(delta):
 		rotation = velocity.angle()
 		move_and_slide()
 
-func _on_fish_collision_body_entered(body):
+func _on_fish_hitbox_entered(body):
 	player = get_node("../Ship")
 	if body.name == "Ship":
 		velocity = -velocity.normalized() * 500
@@ -35,7 +35,7 @@ func _on_fish_collision_body_entered(body):
 		onCollide = true
 	move_and_slide()
 		
-func _on_fish_collision_body_exited(body):
+func _on_fish_hitbox_exited(body):
 	onCollide = false
 	velocity = velocity.normalized()
 	move_and_slide()

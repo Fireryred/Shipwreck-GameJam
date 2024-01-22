@@ -1,19 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://2icjmx6erfuf"]
+[gd_scene load_steps=8 format=3 uid="uid://2icjmx6erfuf"]
 
 [ext_resource type="PackedScene" uid="uid://joogv4uips5l" path="res://Scenes/ship.tscn" id="1_4tq6a"]
 [ext_resource type="Texture2D" uid="uid://dfd7pwdtnowvq" path="res://Assets/BG.png" id="3_6tga8"]
 [ext_resource type="PackedScene" uid="uid://bhjqyr641p88q" path="res://Scenes/fish.tscn" id="3_477q0"]
 [ext_resource type="Script" path="res://Script/playerHp.gd" id="4_00wag"]
 [ext_resource type="PackedScene" uid="uid://ldocbiq77txa" path="res://Scenes/torpedo_ship.tscn" id="5_if0t7"]
+[ext_resource type="PackedScene" uid="uid://bbjg1sk31dtbl" path="res://Scenes/mouse.tscn" id="6_q5wnw"]
 
 [sub_resource type="GDScript" id="GDScript_tgxmn"]
 script/source = "extends Node2D
 
-var cursor := load(\"res://Assets/Cannon Cursor main.png\")
+var cursor := load(\"res://Assets/Cannon Cursor 39.png\")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Input.set_custom_mouse_cursor(cursor)
+	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(20, 20))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,3 +54,6 @@ scale = Vector2(1, 1)
 
 [node name="TorpedoShip" parent="." instance=ExtResource("5_if0t7")]
 position = Vector2(400, 365)
+
+[node name="Mouse" parent="." instance=ExtResource("6_q5wnw")]
+visible = false

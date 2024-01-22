@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbjg1sk31dtbl"]
+
+[ext_resource type="Texture2D" uid="uid://tu6mlilnmiag" path="res://Assets/Cannon Cursor 53.png" id="2_ekr2i"]
+[ext_resource type="Script" path="res://Script/mouse.gd" id="2_pyrgb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g5l5"]
+atlas = ExtResource("2_ekr2i")
+region = Rect2(0, 0, 56, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vf1j"]
+atlas = ExtResource("2_ekr2i")
+region = Rect2(52, 0, 56, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mndia"]
+atlas = ExtResource("2_ekr2i")
+region = Rect2(112, 0, 56, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mp5hp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g5l5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vf1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mndia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vf1j")
+}],
+"loop": true,
+"name": &"Enemy",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0dpgv"]
+radius = 9.05539
+
+[node name="Mouse" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_mp5hp")
+animation = &"Enemy"
+script = ExtResource("2_pyrgb")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0dpgv")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
