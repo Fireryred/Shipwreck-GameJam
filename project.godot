@@ -21,6 +21,11 @@ Game="*res://Global/Game.gd"
 Util="*res://Global/Util.gd"
 Mouse="res://Scenes/mouse.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [dotnet]
 
 project/assembly_name="Shipwreck-game Jam"
