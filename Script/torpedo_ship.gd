@@ -10,20 +10,26 @@ var player
 var speed := 0
 var angle := Vector2.ZERO
 var is_hurt := false
+var starting_pos := Vector2.ZERO
 
 func _ready():
 	state.play("Idle")
 	player = get_node("../Ship")
 	angle = global_position.direction_to(player.position)
+	starting_pos = position
 	
 func _physics_process(delta):
 	#Acceleration
 	speed += acceleration
 	velocity = angle * min(speed, max_speed)
 	
+	print(str(velocity))
+	
 	#rotate to direction
 	rotation = velocity.angle()
 	move_and_slide()
+	if (starting_pos * 5 < position):
+		queue_free()
 	
 func _on_torpedo_collision_body_entered(body):
 	if body.name == "Ship":

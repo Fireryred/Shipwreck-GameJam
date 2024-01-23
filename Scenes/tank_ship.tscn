@@ -58,7 +58,6 @@ script = ExtResource("1_gsis6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-75, 0)
 rotation = 1.5708
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_ew3ib")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -73,7 +72,6 @@ collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="TankHitbox"]
-scale = Vector2(1, 1)
 polygon = PackedVector2Array(-50, -225, 420, 0, -50, 225)
 
 [node name="TankHurtbox" type="Area2D" parent="."]
