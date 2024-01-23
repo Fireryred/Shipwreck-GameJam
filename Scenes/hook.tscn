@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciqe1bi228g28"]
+
+[ext_resource type="Texture2D" uid="uid://bi15ba5ytsupq" path="res://Assets/Hook.png" id="1_60itr"]
+[ext_resource type="Script" path="res://Script/hook.gd" id="1_usvxe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b6hea"]
+radius = 29.0689
+
+[node name="Hook" type="Area2D"]
+scale = Vector2(0.7, 0.7)
+monitoring = false
+monitorable = false
+script = ExtResource("1_usvxe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b6hea")
+
+[node name="Hook" type="Sprite2D" parent="."]
+rotation = -3.14159
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_60itr")
+
+[node name="HookHurtbox" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HookHurtbox"]
+shape = SubResource("CircleShape2D_b6hea")

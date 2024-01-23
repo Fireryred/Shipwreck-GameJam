@@ -1,12 +1,19 @@
 extends Node2D
 
 @onready var shoot_position := $ShootPosition
+@onready var cannon := $Cannon
+@onready var hook := $Hook
 @export var firerate := 1.0
 
+const CANNON = "Cannon"
+const HOOK = "Hook"
+
 var cannon_ball_scene := preload("res://Scenes/cannonball.tscn")
+var hook_scene := preload("res://Scenes/hook.tscn")
 
 var is_left_click_hold := false
 var is_delay_over := true
+var bullet_type := "Cannon"
 
 func _process(delta):
 	look_at(get_global_mouse_position())
@@ -14,17 +21,34 @@ func _process(delta):
 		_shoot()
 
 func _unhandled_input(event):
+	if event.is_action_pressed("key_q"):
+		_switch_weapon()
+		
 	if event.is_action_pressed("left_click"):
 		is_left_click_hold = true
 	elif event.is_action_released("left_click"):
 		is_left_click_hold = false
 
+func _switch_weapon():
+	if bullet_type == CANNON:
+		bullet_type = HOOK
+		cannon.visible = false
+		hook.visible = true
+	elif bullet_type == HOOK:
+		bullet_type = CANNON
+		cannon.visible = true
+		hook.visible = false
+
 func _shoot():
-	_add_bullet()
+	_add_bullet(bullet_type)
 	_add_delay()
 
-func _add_bullet():
-	var bullet := cannon_ball_scene.instantiate()
+func _add_bullet(bullet_type: String):
+	var bullet
+	if bullet_type == CANNON:
+		bullet = cannon_ball_scene.instantiate()
+	elif bullet_type == HOOK:
+		bullet = hook_scene.instantiate()
 	bullet.position = shoot_position.global_position
 	bullet.direction = global_position.direction_to(get_global_mouse_position())
 	add_child(bullet)

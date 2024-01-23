@@ -100,6 +100,7 @@ height = 10.0
 
 [node name="Fish" type="CharacterBody2D"]
 scale = Vector2(0.2, 0.2)
+collision_mask = 0
 script = ExtResource("1_phlq8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -134,12 +135,12 @@ shape = SubResource("CapsuleShape2D_ko2ss")
 [node name="FishHurtbox" type="Area2D" parent="."]
 scale = Vector2(5, 5)
 collision_layer = 2
-collision_mask = 0
-monitoring = false
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishHurtbox"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_f3orc")
 
-[connection signal="body_entered" from="FishHitbox" to="." method="_on_fish_collision_body_entered"]
-[connection signal="body_exited" from="FishHitbox" to="." method="_on_fish_collision_body_exited"]
+[connection signal="body_entered" from="FishHitbox" to="." method="_on_fish_hitbox_entered"]
+[connection signal="body_exited" from="FishHitbox" to="." method="_on_fish_hitbox_exited"]
+[connection signal="area_entered" from="FishHurtbox" to="." method="_on_fish_hurtbox_area_entered"]
