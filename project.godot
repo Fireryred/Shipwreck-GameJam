@@ -95,3 +95,5 @@ key_q={
 2d_physics/layer_1="Ship"
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Bullet"
+2d_physics/layer_4="Loot"
+2d_physics/layer_5="Outside Border"

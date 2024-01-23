@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var max_speed = 50
 @export_range(0, 10, 0.1) var drag_factor := 0.1
 
-var player
+var ship
 var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
 var onCollide = false
@@ -13,9 +13,9 @@ func _ready():
 	anim.play("Idle")
 
 func _physics_process(delta):
-	player = get_node("../Ship")
+	ship = get_node("../Ship")
 	if !onCollide:
-		var direction = (player.position - self.position).normalized()
+		var direction = (ship.position - self.position).normalized()
 		
 		desired_velocity = direction * max_speed
 		
@@ -28,7 +28,7 @@ func _physics_process(delta):
 		move_and_slide()
 
 func _on_fish_hitbox_entered(body):
-	player = get_node("../Ship")
+	ship = get_node("../Ship")
 	if body.name == "Ship":
 		velocity = -velocity.normalized() * 500
 		body.health -= .5
