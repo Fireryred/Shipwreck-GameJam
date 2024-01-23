@@ -40,4 +40,9 @@ func _spawn_enemy(enemy: Dictionary):
 	enemy_instance.position = enemy_position
 	
 	get_parent().add_child(enemy_instance)
+	_change_child_order(enemy_instance)
+
+func _change_child_order(enemy: Node2D):
+	var current_enemy := get_node("../"+enemy.name)
+	get_parent().move_child(current_enemy, 0)
 	
