@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var state = get_node("AnimatedSprite2D")
+@onready var hitbox := $TorpedoHitbox/CollisionShape2D
 @export var max_speed := 10000
 @export var acceleration := 5
 @export_range(0, 10, 0.1) var drag_factor := 0.1
@@ -36,6 +37,7 @@ func _on_torpedo_hurtbox_area_entered(area):
 	if (is_hurt):
 		queue_free()
 	else:
+		hitbox.shape.height = 1000
 		state.play("Hurt")
 		is_hurt = true
 	
