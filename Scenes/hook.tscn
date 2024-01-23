@@ -21,8 +21,11 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_60itr")
 
 [node name="HookHurtbox" type="Area2D" parent="."]
-monitoring = false
+collision_layer = 0
+collision_mask = 8
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HookHurtbox"]
 shape = SubResource("CircleShape2D_b6hea")
+
+[connection signal="area_entered" from="HookHurtbox" to="." method="_on_hook_hurtbox_area_entered"]

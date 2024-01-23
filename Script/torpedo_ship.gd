@@ -3,7 +3,8 @@ extends CharacterBody2D
 @onready var state = get_node("AnimatedSprite2D")
 @onready var hitbox := $TorpedoHitbox/CollisionShape2D
 @export var max_speed := 10000
-@export var acceleration := 5
+@export var acceleration := 25
+@export var lifetime := 5
 @export_range(0, 10, 0.1) var drag_factor := 0.1
 
 var player 
@@ -14,6 +15,8 @@ var is_hurt := false
 func _ready():
 	state.play("Idle")
 	player = get_node("../Ship")
+	get_node("Lifetime").wait_time = lifetime
+	get_node("Lifetime").start()
 	angle = global_position.direction_to(player.position)
 	
 func _physics_process(delta):
@@ -40,5 +43,6 @@ func _on_torpedo_hurtbox_area_entered(area):
 		hitbox.shape.height = 1000
 		state.play("Hurt")
 		is_hurt = true
-	
 
+func _on_lifetime_timeout():
+	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://joogv4uips5l"]
+[gd_scene load_steps=8 format=3 uid="uid://joogv4uips5l"]
 
 [ext_resource type="Script" path="res://Script/ship.gd" id="1_pjglu"]
 [ext_resource type="Texture2D" uid="uid://km8m4lwf8a2g" path="res://Assets/Ship Body.png" id="1_vxror"]
@@ -13,7 +13,11 @@ height = 580.0
 radius = 190.0
 height = 650.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yayt6"]
+radius = 1.41421
+
 [node name="Ship" type="CharacterBody2D"]
+collision_mask = 17
 script = ExtResource("1_pjglu")
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
@@ -45,3 +49,10 @@ position = Vector2(-4, 0)
 rotation = -1.5708
 scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_7kqu3")
+
+[node name="ShipCollection" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipCollection"]
+shape = SubResource("CircleShape2D_yayt6")
