@@ -16,6 +16,8 @@ collision_mask = 0
 monitoring = false
 script = ExtResource("1_4nmpy")
 
+[node name="Lifetime" type="Timer" parent="."]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6ofd6")
 
@@ -30,4 +32,5 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CannonHitbox"]
 shape = SubResource("CircleShape2D_v0d7c")
 
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
 [connection signal="area_entered" from="CannonHitbox" to="." method="_on_cannon_hitbox_area_entered"]

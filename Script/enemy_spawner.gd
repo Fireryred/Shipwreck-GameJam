@@ -28,7 +28,7 @@ func _on_spawn_rate_timeout():
 		_spawn_enemy(enemy_data.Torpedo)
 	else:
 		_spawn_enemy(enemy_data.Fish)
-	get_child(0).wait_time = (randf_range(1, 2)) / (wave * .5)
+	get_node("SpawnRate").wait_time = (randf_range(1, 2)) / (wave * .5)
 	
 func _spawn_enemy(enemy: Dictionary):
 	var enemy_position = Vector2(randf_range(-124 ,1276), randf_range(-124, 772))

@@ -79,5 +79,9 @@ rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_k27uq")
 
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="body_entered" from="TorpedoHitbox" to="." method="_on_torpedo_collision_body_entered"]
 [connection signal="area_entered" from="TorpedoHurtbox" to="." method="_on_torpedo_hurtbox_area_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
