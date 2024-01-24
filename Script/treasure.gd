@@ -15,22 +15,22 @@ var drop_data := {
 	"Blue" : {
 		"Type": "Blue",
 		"Frequency" : 50,
-		"Score": 100
+		"Score": 200
 	},
 	"Red" : {
 		"Type": "Red",
 		"Frequency" : 25,
-		"Score": 100
+		"Score": 400
 	},
 	"Luck" : {
 		"Type": "Luck",
 		"Frequency" : 10,
-		"Score": 100
+		"State": false
 	},
 	"Health" : {
 		"Type": "Health",
 		"Frequency" : 30,
-		"Score": 100
+		"Total": 5
 	}
 }
 
