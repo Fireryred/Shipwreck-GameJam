@@ -1,10 +1,81 @@
-[gd_scene load_steps=7 format=3 uid="uid://d24vtfoctcwll"]
+[gd_scene load_steps=11 format=3 uid="uid://d24vtfoctcwll"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_gfk5u"]
 [ext_resource type="Texture2D" uid="uid://cnc8oqf6jgiah" path="res://Assets/Menu/Menu Stick.png" id="2_rnovg"]
 [ext_resource type="Texture2D" uid="uid://dygs7x17u8wji" path="res://Assets/Menu/Button.png" id="3_b7rj0"]
 
+[sub_resource type="Animation" id="Animation_y3vpa"]
+resource_name = "Hover Credit"
+length = 0.50001
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credit Button:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.201718, -0.0992817, -0.202458, -0.0736297]
+}
+
+[sub_resource type="Animation" id="Animation_wujwt"]
+resource_name = "Hover"
+length = 0.30001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Play Button:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.124222, 0.0, 0.0311432]
+}
+
+[sub_resource type="Animation" id="Animation_0cjsn"]
+resource_name = "Hover Quit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Quit Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(7.48755, 468.579), Vector2(481.289, 536.265), Vector2(749.091, 674.58), Vector2(-2408.61, -673.256), Vector2(-3535.73, -1503.15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Quit Button:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.847007, 2.97493, 4.98786]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iuhne"]
+_data = {
+"Hover Credit": SubResource("Animation_y3vpa"),
+"Hover Play": SubResource("Animation_wujwt"),
+"Hover Quit": SubResource("Animation_0cjsn")
+}
+
 [sub_resource type="FontFile" id="FontFile_064dy"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/200/0/ascent = 0.0
 cache/0/200/0/descent = 0.0
 cache/0/200/0/underline_position = 0.0
@@ -35,16 +106,27 @@ position = Vector2(918.456, 373.775)
 scale = Vector2(0.339804, 0.339804)
 texture = ExtResource("2_rnovg")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStick"]
+libraries = {
+"": SubResource("AnimationLibrary_iuhne")
+}
+
 [node name="Play Button" type="Sprite2D" parent="MenuStick"]
 position = Vector2(-10.6353, -593.799)
+rotation = -0.118634
 scale = Vector2(0.842194, 0.800765)
 texture = ExtResource("3_b7rj0")
 
-[node name="Play" type="Button" parent="MenuStick"]
-offset_left = -263.257
-offset_top = -755.657
-offset_right = 217.743
-offset_bottom = -482.657
+[node name="Play" type="Button" parent="MenuStick/Play Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -579.5
+offset_top = -233.0
+offset_right = -579.5
+offset_bottom = -233.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_hgimh")
 text = "PLAY"
 
@@ -54,29 +136,44 @@ rotation = -0.201718
 scale = Vector2(0.842, 0.842)
 texture = ExtResource("3_b7rj0")
 
-[node name="Credits" type="Button" parent="MenuStick"]
-offset_left = -386.858
-offset_top = -158.253
-offset_right = 358.142
-offset_bottom = 114.747
-rotation = -0.202458
+[node name="Credits" type="Button" parent="MenuStick/Credit Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -579.5
+offset_top = -233.0
+offset_right = -579.5
+offset_bottom = -233.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_hgimh")
 text = "CREDITS"
 
 [node name="Quit Button" type="Sprite2D" parent="MenuStick"]
-position = Vector2(7.48755, 468.579)
+position = Vector2(-2408.61, -673.256)
+rotation = 4.98786
 scale = Vector2(0.842, 0.842)
 texture = ExtResource("3_b7rj0")
 
-[node name="Quit" type="Button" parent="MenuStick"]
-offset_left = -242.657
-offset_top = 318.493
-offset_right = 238.343
-offset_bottom = 591.493
+[node name="Quit" type="Button" parent="MenuStick/Quit Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -579.5
+offset_top = -233.0
+offset_right = -579.5
+offset_bottom = -233.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_hgimh")
 text = "QUIT
 "
 
-[connection signal="pressed" from="MenuStick/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MenuStick/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="MenuStick/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="MenuStick/Play Button/Play" to="." method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="MenuStick/Play Button/Play" to="." method="_on_play_mouse_exited"]
+[connection signal="pressed" from="MenuStick/Play Button/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="MenuStick/Credit Button/Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="mouse_exited" from="MenuStick/Credit Button/Credits" to="." method="_on_credits_mouse_exited"]
+[connection signal="pressed" from="MenuStick/Credit Button/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="MenuStick/Quit Button/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="MenuStick/Quit Button/Quit" to="." method="_on_quit_pressed"]

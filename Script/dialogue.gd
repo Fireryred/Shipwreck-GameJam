@@ -45,6 +45,7 @@ func getDialog() -> Array:
 func nextPhrase():
 	if phraseNum >= len(dialog):
 		queue_free()
+		get_tree().change_scene_to_file("res://Scenes/main.tscn")
 		return
 	finished = false
 	

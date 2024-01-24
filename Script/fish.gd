@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@onready var anim = get_node("AnimatedSprite2D")
-@export var max_speed = 50
+@onready var anim = $AnimatedSprite2D
+@export var max_speed = 50 
 @export_range(0, 10, 0.1) var drag_factor := 0.1
 
 var treasure
@@ -10,6 +10,7 @@ var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
 var onCollide = false
 var damage = randf_range(0, .5)
+var ohko = randf_range(0, 100)#if ohko > .01
 
 func _ready():
 	anim.play("Idle")
