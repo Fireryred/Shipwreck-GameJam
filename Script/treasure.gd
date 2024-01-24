@@ -65,12 +65,14 @@ func _determine_drop():
 		Type.play("Blue")
 
 func _on_area_entered(area):
-	is_detected = true
-	if (area.name == "ShipCollection"):
-		if drop.Type == "Luck":
-			ship.is_lucky = true
-		elif drop.Type == "Health":
-			ship.health += 5
-		ship.drop = drop
-		ship._calculate_score()
-		queue_free()
+	if (area.name == "HookHitbox"):
+		is_detected = true
+	if is_detected:
+		if (area.name == "ShipCollection"):
+			if drop.Type == "Luck":
+				ship.is_lucky = true
+			elif drop.Type == "Health":
+				ship.health += 5
+			ship.drop = drop
+			ship._calculate_score()
+			queue_free()

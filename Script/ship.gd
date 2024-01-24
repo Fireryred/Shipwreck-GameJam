@@ -27,8 +27,12 @@ func _physics_process(delta):
 	
 	#rotate to direction
 	rotation = velocity.angle()
-	
+	_save_game()
 	move_and_slide()
+
+func _save_game():
+	Game.playerHp = health
+	Game.score = score
 
 func _calculate_score():
 	if drop != null:

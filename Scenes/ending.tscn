@@ -56,7 +56,7 @@ offset_right = 1148.0
 offset_bottom = 290.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
-text = "[center]Score Goes Here
+text = "[center]Score: 
 "
 
 [node name="Ending Text" type="RichTextLabel" parent="."]

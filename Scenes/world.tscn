@@ -19,6 +19,7 @@ script/source = "extends Node2D
 
 @onready var Cannon := $CannonSelectHud
 @onready var Hook := $HookSelectHud
+@onready var Ship := $Ship
 
 var cursor := load(\"res://Assets/Cannon Cursor 39.png\")
 var is_hook = false
@@ -31,7 +32,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Ship.health <= 0:
+		Input.set_custom_mouse_cursor(null)
+		get_tree().change_scene_to_file(\"res://Scenes/ending.tscn\")
 
 func _unhandled_input(event):
 	if event.is_action_pressed(\"key_q\"):
