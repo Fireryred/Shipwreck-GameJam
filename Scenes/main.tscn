@@ -1,24 +1,82 @@
-[gd_scene load_steps=2 format=3 uid="uid://d24vtfoctcwll"]
+[gd_scene load_steps=7 format=3 uid="uid://d24vtfoctcwll"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_gfk5u"]
+[ext_resource type="Texture2D" uid="uid://cnc8oqf6jgiah" path="res://Assets/Menu/Menu Stick.png" id="2_rnovg"]
+[ext_resource type="Texture2D" uid="uid://dygs7x17u8wji" path="res://Assets/Menu/Button.png" id="3_b7rj0"]
+
+[sub_resource type="FontFile" id="FontFile_064dy"]
+cache/0/200/0/ascent = 0.0
+cache/0/200/0/descent = 0.0
+cache/0/200/0/underline_position = 0.0
+cache/0/200/0/underline_thickness = 0.0
+cache/0/200/0/scale = 1.0
+cache/0/200/0/kerning_overrides/200/0 = Vector2(0, 0)
+cache/0/200/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/200/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l3ybs"]
+
+[sub_resource type="Theme" id="Theme_hgimh"]
+default_font_size = 200
+Button/fonts/font = SubResource("FontFile_064dy")
+Button/styles/normal = SubResource("StyleBoxEmpty_l3ybs")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_gfk5u")
 
-[node name="Play" type="Button" parent="."]
-offset_left = 438.0
-offset_top = 340.0
-offset_right = 700.0
-offset_bottom = 403.0
-text = "Play"
+[node name="MenuStick" type="Sprite2D" parent="."]
+position = Vector2(918.456, 373.775)
+scale = Vector2(0.339804, 0.339804)
+texture = ExtResource("2_rnovg")
 
-[node name="Quit" type="Button" parent="."]
-offset_left = 438.0
-offset_top = 463.0
-offset_right = 700.0
-offset_bottom = 526.0
-text = "Quit
+[node name="Play Button" type="Sprite2D" parent="MenuStick"]
+position = Vector2(-10.6353, -593.799)
+scale = Vector2(0.842194, 0.800765)
+texture = ExtResource("3_b7rj0")
+
+[node name="Play" type="Button" parent="MenuStick"]
+offset_left = -263.257
+offset_top = -755.657
+offset_right = 217.743
+offset_bottom = -482.657
+theme = SubResource("Theme_hgimh")
+text = "PLAY"
+
+[node name="Credit Button" type="Sprite2D" parent="MenuStick"]
+position = Vector2(10.4303, -90.567)
+rotation = -0.201718
+scale = Vector2(0.842, 0.842)
+texture = ExtResource("3_b7rj0")
+
+[node name="Credits" type="Button" parent="MenuStick"]
+offset_left = -386.858
+offset_top = -158.253
+offset_right = 358.142
+offset_bottom = 114.747
+rotation = -0.202458
+theme = SubResource("Theme_hgimh")
+text = "CREDITS"
+
+[node name="Quit Button" type="Sprite2D" parent="MenuStick"]
+position = Vector2(7.48755, 468.579)
+scale = Vector2(0.842, 0.842)
+texture = ExtResource("3_b7rj0")
+
+[node name="Quit" type="Button" parent="MenuStick"]
+offset_left = -242.657
+offset_top = 318.493
+offset_right = 238.343
+offset_bottom = 591.493
+theme = SubResource("Theme_hgimh")
+text = "QUIT
 "
 
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MenuStick/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MenuStick/Credits" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MenuStick/Quit" to="." method="_on_play_pressed"]

@@ -1,25 +1,51 @@
-[gd_scene load_steps=9 format=3 uid="uid://2icjmx6erfuf"]
+[gd_scene load_steps=15 format=3 uid="uid://2icjmx6erfuf"]
 
 [ext_resource type="PackedScene" uid="uid://joogv4uips5l" path="res://Scenes/ship.tscn" id="1_4tq6a"]
 [ext_resource type="Texture2D" uid="uid://dfd7pwdtnowvq" path="res://Assets/BG.png" id="3_6tga8"]
 [ext_resource type="Script" path="res://Script/playerHp.gd" id="4_00wag"]
 [ext_resource type="PackedScene" uid="uid://bcrp0272lup7v" path="res://Scenes/enemy_spawner.tscn" id="5_7ekcb"]
+[ext_resource type="Texture2D" uid="uid://ctavufsl6lymh" path="res://Assets/HUD/Main Selector HUD.png" id="6_1h35x"]
 [ext_resource type="PackedScene" uid="uid://bbjg1sk31dtbl" path="res://Scenes/mouse.tscn" id="6_q5wnw"]
+[ext_resource type="Texture2D" uid="uid://brtci50whgfrg" path="res://Assets/HUD/Second Selector HUD.png" id="7_duxrm"]
+[ext_resource type="Texture2D" uid="uid://c5vw2yog5gp1b" path="res://Assets/Controller and Key Prompts/Keyboard & Mouse/Dark/Q_Key_Dark.png" id="8_q18fi"]
+[ext_resource type="Script" path="res://Scenes/on_screen_button.gd" id="9_82xoy"]
+[ext_resource type="Texture2D" uid="uid://yyjhiymlxhy0" path="res://Assets/HUD/Cannon Select HUD.png" id="9_b3uhk"]
+[ext_resource type="Texture2D" uid="uid://bo5ysiy74wuev" path="res://Assets/HUD/Hook Select HUD.png" id="10_r6vy6"]
 
 [sub_resource type="GDScript" id="GDScript_tgxmn"]
 script/source = "extends Node2D
 
-var cursor := load(\"res://Assets/Cannon Cursor 39.png\")
+@onready var Cannon := $CannonSelectHud
+@onready var Hook := $HookSelectHud
 
+var cursor := load(\"res://Assets/Cannon Cursor 39.png\")
+var is_hook = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(20, 20))
+	Cannon.visible = true
+	Hook.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func _unhandled_input(event):
+	if event.is_action_pressed(\"key_q\"):
+		_switch()
+		
+
+func _switch():
+	is_hook = !is_hook
+	if is_hook:
+		Cannon.visible = false
+		Hook.visible = true
+	else:
+		Hook.visible = false
+		Cannon.visible = true
+	
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0etpr"]
@@ -78,3 +104,39 @@ shape = SubResource("RectangleShape2D_8a6xp")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(576, 807)
 shape = SubResource("RectangleShape2D_8a6xp")
+
+[node name="Main Selector HUD" type="Sprite2D" parent="."]
+position = Vector2(127, 533)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_1h35x")
+metadata/_edit_lock_ = true
+
+[node name="Second Selector HUD" type="Sprite2D" parent="Main Selector HUD"]
+position = Vector2(284, 260)
+texture = ExtResource("7_duxrm")
+
+[node name="QKeyDark" type="Sprite2D" parent="Main Selector HUD"]
+position = Vector2(408, 360)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_q18fi")
+script = ExtResource("9_82xoy")
+
+[node name="CannonSelectHud" type="Sprite2D" parent="."]
+position = Vector2(125, 538)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_b3uhk")
+
+[node name="Mini_HookSelectHud" type="Sprite2D" parent="CannonSelectHud"]
+position = Vector2(288, 236)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_r6vy6")
+
+[node name="HookSelectHud" type="Sprite2D" parent="."]
+position = Vector2(129, 534)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_r6vy6")
+
+[node name="Mini_CannonSelectHud" type="Sprite2D" parent="HookSelectHud"]
+position = Vector2(268, 256)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_b3uhk")

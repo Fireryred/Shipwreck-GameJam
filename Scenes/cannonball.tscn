@@ -23,6 +23,7 @@ shape = SubResource("CircleShape2D_6ofd6")
 
 [node name="CannonBall" type="Sprite2D" parent="."]
 texture = ExtResource("1_o0e3e")
+flip_h = true
 
 [node name="CannonHitbox" type="Area2D" parent="."]
 collision_layer = 0
