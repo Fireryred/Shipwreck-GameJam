@@ -37,8 +37,7 @@ var drop_data := {
 }
 
 func _ready():
-	#_determine_drop()
-	drop = drop_data.Luck
+	_determine_drop()
 	if drop == null:
 		queue_free()
 

@@ -150,8 +150,7 @@ theme = SubResource("Theme_hgimh")
 text = "CREDITS"
 
 [node name="Quit Button" type="Sprite2D" parent="MenuStick"]
-position = Vector2(-2408.61, -673.256)
-rotation = 4.98786
+position = Vector2(7.48755, 468.579)
 scale = Vector2(0.842, 0.842)
 texture = ExtResource("3_b7rj0")
 
