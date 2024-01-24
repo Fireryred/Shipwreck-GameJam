@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://dilbipeqelddo"]
+
+[ext_resource type="Script" path="res://Script/dialogue.gd" id="1_2pcju"]
+[ext_resource type="Texture2D" uid="uid://tu6mlilnmiag" path="res://Assets/Cannon Cursor 53.png" id="2_i17h3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v1vwm"]
+blend_mode = 3
+
+[sub_resource type="Animation" id="Animation_hso5v"]
+resource_name = "Next Button"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_28lg5"]
+_data = {
+"Next Button": SubResource("Animation_hso5v")
+}
+
+[node name="Dialogue" type="Node2D"]
+position = Vector2(212, 489)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("CanvasItemMaterial_v1vwm")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.875
+anchor_top = 0.1
+anchor_right = 19.0
+anchor_bottom = 2.075
+offset_left = 81.0
+offset_top = -2.0
+offset_right = 121.0
+offset_bottom = 38.0
+color = Color(0.733333, 0.576471, 0.419608, 1)
+script = ExtResource("1_2pcju")
+metadata/_edit_use_anchors_ = true
+
+[node name="Text" type="RichTextLabel" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 24.0
+offset_right = 859.0
+offset_bottom = 104.0
+text = "MESSAGE HERE"
+
+[node name="Name" type="RichTextLabel" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -16.0
+offset_right = 205.0
+offset_bottom = 24.0
+theme_override_font_sizes/normal_font_size = 25
+text = "THIS NAME"
+scroll_active = false
+
+[node name="Timer" type="Timer" parent="Control/ColorRect"]
+
+[node name="Indicator" type="Sprite2D" parent="Control/ColorRect"]
+position = Vector2(779, 100)
+texture = ExtResource("2_i17h3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/ColorRect/Indicator"]
+libraries = {
+"": SubResource("AnimationLibrary_28lg5")
+}

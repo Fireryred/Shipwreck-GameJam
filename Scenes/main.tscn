@@ -78,5 +78,5 @@ text = "QUIT
 "
 
 [connection signal="pressed" from="MenuStick/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MenuStick/Credits" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MenuStick/Quit" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MenuStick/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MenuStick/Quit" to="." method="_on_quit_pressed"]
