@@ -41,8 +41,8 @@ resource_name = "Fish"
 
 [sub_resource type="Animation" id="Animation_t7rc2"]
 resource_name = "Idle"
-length = 0.30001
-loop_mode = 1
+length = 0.20001
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -65,7 +65,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [1, 0, 2]
 }
 
 [sub_resource type="Animation" id="Animation_2860n"]
