@@ -61,11 +61,11 @@ script = ExtResource("1_srp4w")
 sprite_frames = SubResource("SpriteFrames_w8aj3")
 animation = &"Luck"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Treasure" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 96
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Treasure"]
 shape = SubResource("CircleShape2D_c7b5j")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[connection signal="area_entered" from="Treasure" to="." method="_on_area_entered"]

@@ -1,6 +1,6 @@
 extends ProgressBar
 
-@onready var ship = $"../Ship"
+@onready var timer = $"../Ship/LuckTimer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,5 +9,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	value = ship.health
-	
+	value = timer.time_left

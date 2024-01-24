@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var Type := $Drops
+@onready var ship := $"../Ship"
+@onready var shoot_pos := $"../Ship/Cannon/ShootPosition"
 
 var direction := Vector2.ZERO 
 var is_detected := false
@@ -35,14 +37,14 @@ var drop_data := {
 }
 
 func _ready():
-	_determine_drop()
+	#_determine_drop()
+	drop = drop_data.Luck
 	if drop == null:
 		queue_free()
 
 func _physics_process(delta):
 	if is_detected:
-		var ship = get_node("../Ship")
-		direction = (ship.position - position).normalized()
+		direction = (shoot_pos.global_position - position).normalized()
 		position += direction * 600 * delta
 
 func _determine_drop():
@@ -65,6 +67,11 @@ func _determine_drop():
 
 func _on_area_entered(area):
 	is_detected = true
-	print(area.name)
 	if (area.name == "ShipCollection"):
+		if drop.Type == "Luck":
+			ship.is_lucky = true
+		elif drop.Type == "Health":
+			ship.health += 5
+		ship.drop = drop
+		ship._calculate_score()
 		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciqe1bi228g28"]
+[gd_scene load_steps=7 format=3 uid="uid://ciqe1bi228g28"]
 
 [ext_resource type="Script" path="res://Script/hook.gd" id="1_usvxe"]
 [ext_resource type="Texture2D" uid="uid://771jk3e464r4" path="res://Assets/Hook Close.png" id="2_ftlsd"]
@@ -26,6 +26,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6b4l5"]
+radius = 5.89015
+
 [node name="Hook" type="Area2D"]
 scale = Vector2(0.7, 0.7)
 collision_layer = 32
@@ -51,7 +54,8 @@ collision_mask = 64
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HookHurtbox"]
-shape = SubResource("CircleShape2D_b6hea")
+position = Vector2(-1.43051e-06, 0)
+shape = SubResource("CircleShape2D_6b4l5")
 
 [node name="HookHitbox" type="Area2D" parent="."]
 collision_layer = 32
@@ -63,4 +67,5 @@ shape = SubResource("CircleShape2D_b6hea")
 
 [connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]
 [connection signal="area_entered" from="HookHurtbox" to="." method="_on_hook_hurtbox_area_entered"]
+[connection signal="area_exited" from="HookHurtbox" to="." method="_on_hook_hurtbox_area_exited"]
 [connection signal="area_entered" from="HookHitbox" to="." method="_on_hook_hurtbox_area_entered"]

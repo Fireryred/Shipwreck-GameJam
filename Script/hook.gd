@@ -4,11 +4,11 @@ extends Node2D
 
 @onready var Duration := $Duration
 @onready var Status := $Hook
+@onready var shoot_position := $"../ShootPosition"
 
 var direction := Vector2.ZERO
 var duration := 1
 var is_retracted := false
-var ship
 
 func _ready():
 	Duration.wait_time = duration
@@ -17,16 +17,14 @@ func _ready():
 	Status.play("Open")
 
 func _physics_process(delta):
-	ship = get_node("../../../Ship")
 	if is_retracted:
-		direction = (ship.position - position).normalized()
+		direction = (shoot_position.global_position - position).normalized()
 		position += direction * speed * delta
 		look_at(position - direction)
 	else:
 		position += direction * speed * delta
 		
 func _on_hook_hurtbox_area_entered(area):
-	print(area)
 	if (area.name == "ShipCollection"):
 		get_parent().is_delay_over = true
 		queue_free()

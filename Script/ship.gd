@@ -1,12 +1,19 @@
 extends CharacterBody2D
 
-@export var max_speed = 300
+@export var max_speed := 300
 @export_range(0, 10, 0.1) var drag_factor := .1
+@onready var luck_timer := $LuckTimer
+@onready var hook := $Cannon/Hook
+@onready var shooting_pos := $Cannon/ShootPosition
 
 var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
 
-var health = Game.playerHp
+var drop
+var max_health := Game.playerHp
+var health := Game.playerHp
+var score := Game.score
+var is_lucky := true
 
 func _physics_process(delta):
 	#get input
@@ -23,3 +30,16 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
+func _calculate_score():
+	if drop != null:
+		if drop.Type == "Luck":
+			luck_timer.wait_time = 3
+			luck_timer.start()
+		elif drop.Type == "Health":
+			health += max_health * .05
+		else:
+			score += drop.Score * (2 if is_lucky else 1)
+
+func _on_luck_timer_timeout():
+	is_lucky = false
+	luck_timer.stop()
