@@ -61,7 +61,7 @@ func _spawn_hook(bullet: Node2D):
 func _spawn_bullet(bullet: Node2D):
 	bullet.position = shoot_position.global_position
 	bullet.direction = global_position.direction_to(get_global_mouse_position())
-	add_child(bullet)
+	add_child(bullet, true)
 
 func _add_delay(duration: float):
 	is_delay_over = false

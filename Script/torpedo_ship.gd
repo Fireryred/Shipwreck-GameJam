@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var lifetime := 5
 @export_range(0, 10, 0.1) var drag_factor := 0.1
 
+var treasure
 var player 
 var speed := 0
 var angle := Vector2.ZERO
@@ -45,4 +46,10 @@ func _on_torpedo_hurtbox_area_entered(area):
 		is_hurt = true
 
 func _on_lifetime_timeout():
+	_spawn_treasure()
 	queue_free()
+
+func _spawn_treasure():
+	var treasure_instance = treasure.instantiate()
+	treasure_instance.position = position
+	get_parent().add_child(treasure_instance, true)

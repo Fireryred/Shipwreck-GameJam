@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var max_speed = 150
 @export_range(0, 10, 0.1) var drag_factor := 0.1
 
+var treasure
 var player
 var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
@@ -36,7 +37,13 @@ func _set_ship_state():
 		health -= 1
 		anim.play("Hurt2")
 	else:
+		_spawn_treasure()
 		queue_free()
+
+func _spawn_treasure():
+	var treasure_instance = treasure.instantiate()
+	treasure_instance.position = position
+	get_parent().add_child(treasure_instance, true)
 
 func _on_tank_hitbox_body_entered(body):
 	if body.name == "Ship":
@@ -44,8 +51,7 @@ func _on_tank_hitbox_body_entered(body):
 		body.health -= 5*health
 
 func _on_tank_hurtbox_area_entered(area):
-	if area.name == "CannonBall":
-		_set_ship_state()
+	_set_ship_state()
 
 func _on_tank_hitbox_area_exited(area):
 	if area.name == "ShipHurtbox":

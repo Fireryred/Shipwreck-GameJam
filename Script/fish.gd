@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var max_speed = 50
 @export_range(0, 10, 0.1) var drag_factor := 0.1
 
+var treasure
 var ship
 var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
@@ -42,4 +43,10 @@ func _on_fish_hitbox_exited(body):
 	move_and_slide()
 
 func _on_fish_hurtbox_area_entered(area):
+	_spawn_treasure()
 	queue_free()
+
+func _spawn_treasure():
+	var treasure_instance = treasure.instantiate()
+	treasure_instance.position = position
+	get_parent().add_child(treasure_instance, true)

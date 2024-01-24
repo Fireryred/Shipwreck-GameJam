@@ -3,6 +3,7 @@ extends Node2D
 var fish := preload("res://Scenes/fish.tscn")
 var torpedo := preload("res://Scenes/torpedo_ship.tscn")
 var tank := preload("res://Scenes/tank_ship.tscn")
+var treasure := load("res://Scenes/treasure.tscn")
 
 var enemy_data := {
 	"Fish":{
@@ -39,9 +40,10 @@ func _spawn_enemy(enemy: Dictionary):
 		enemy_position = Vector2(randf_range(-124 ,1276), randf_range(-124, 772))
 	
 	var enemy_instance = enemy.Scene.instantiate()
+	enemy_instance.treasure = treasure
 	enemy_instance.position = enemy_position
 	
-	get_parent().add_child(enemy_instance)
+	get_parent().add_child(enemy_instance, true)
 	_change_child_order(enemy_instance)
 
 func _change_child_order(enemy: Node2D):
