@@ -40,7 +40,13 @@ func _set_ship_state():
 
 func _on_tank_hitbox_body_entered(body):
 	if body.name == "Ship":
+		onCollide = true
 		body.health -= 5*health
 
 func _on_tank_hurtbox_area_entered(area):
-	_set_ship_state()
+	if area.name == "CannonBall":
+		_set_ship_state()
+
+func _on_tank_hitbox_area_exited(area):
+	if area.name == "ShipHurtbox":
+		onCollide = false

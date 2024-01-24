@@ -8,6 +8,7 @@ var ship
 var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
 var onCollide = false
+var damage = randf_range(0, .5)
 
 func _ready():
 	anim.play("Idle")
@@ -31,7 +32,7 @@ func _on_fish_hitbox_entered(body):
 	ship = get_node("../Ship")
 	if body.name == "Ship":
 		velocity = -velocity.normalized() * 500
-		body.health -= .5
+		body.health -= damage
 		onCollide = true
 	move_and_slide()
 		

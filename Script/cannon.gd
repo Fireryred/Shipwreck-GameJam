@@ -55,9 +55,8 @@ func _add_bullet(bullet_type: String):
 		
 func _spawn_hook(bullet: Node2D):
 	is_delay_over = false
+	bullet.duration = hook_duration
 	_spawn_bullet(bullet)
-	await get_tree().create_timer(hook_duration).timeout
-	_retract_hook(bullet)
 
 func _spawn_bullet(bullet: Node2D):
 	bullet.position = shoot_position.global_position
@@ -68,6 +67,3 @@ func _add_delay(duration: float):
 	is_delay_over = false
 	await get_tree().create_timer(duration).timeout
 	is_delay_over = true
-
-func _retract_hook(bullet: Node2D):
-	bullet.is_retracted = true

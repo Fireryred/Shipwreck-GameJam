@@ -6,6 +6,5 @@
 script = ExtResource("1_up1ke")
 
 [node name="SpawnRate" type="Timer" parent="."]
-autostart = true
 
 [connection signal="timeout" from="SpawnRate" to="." method="_on_spawn_rate_timeout"]

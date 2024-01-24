@@ -1,31 +1,66 @@
-[gd_scene load_steps=4 format=3 uid="uid://ciqe1bi228g28"]
+[gd_scene load_steps=6 format=3 uid="uid://ciqe1bi228g28"]
 
-[ext_resource type="Texture2D" uid="uid://bi15ba5ytsupq" path="res://Assets/Hook.png" id="1_60itr"]
 [ext_resource type="Script" path="res://Script/hook.gd" id="1_usvxe"]
+[ext_resource type="Texture2D" uid="uid://771jk3e464r4" path="res://Assets/Hook Close.png" id="2_ftlsd"]
+[ext_resource type="Texture2D" uid="uid://6g38gilxiwav" path="res://Assets/Hook Open.png" id="3_08hd4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b6hea"]
-radius = 29.0689
+radius = 5.89015
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mx7we"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ftlsd")
+}],
+"loop": true,
+"name": &"Close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_08hd4")
+}],
+"loop": true,
+"name": &"Open",
+"speed": 5.0
+}]
 
 [node name="Hook" type="Area2D"]
 scale = Vector2(0.7, 0.7)
+collision_layer = 32
+collision_mask = 0
 monitoring = false
-monitorable = false
 script = ExtResource("1_usvxe")
+
+[node name="Duration" type="Timer" parent="."]
+autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_b6hea")
 
-[node name="Hook" type="Sprite2D" parent="."]
+[node name="Hook" type="AnimatedSprite2D" parent="."]
 rotation = -3.14159
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_60itr")
+sprite_frames = SubResource("SpriteFrames_mx7we")
+animation = &"Open"
 
 [node name="HookHurtbox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 8
+collision_mask = 64
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HookHurtbox"]
 shape = SubResource("CircleShape2D_b6hea")
 
+[node name="HookHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HookHitbox"]
+shape = SubResource("CircleShape2D_b6hea")
+
+[connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]
 [connection signal="area_entered" from="HookHurtbox" to="." method="_on_hook_hurtbox_area_entered"]
+[connection signal="area_entered" from="HookHitbox" to="." method="_on_hook_hurtbox_area_entered"]

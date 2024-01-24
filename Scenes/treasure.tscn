@@ -1,0 +1,108 @@
+[gd_scene load_steps=13 format=3 uid="uid://bvfr32c1d06lj"]
+
+[ext_resource type="Script" path="res://Script/treasure.gd" id="1_srp4w"]
+[ext_resource type="Texture2D" uid="uid://cba0ji3mlqfe4" path="res://Assets/Drops/Blue Gem Drop.png" id="2_r0ysj"]
+[ext_resource type="Texture2D" uid="uid://mfn5udbxjs6u" path="res://Assets/Drops/Green Gem Drop.png" id="3_ilffd"]
+[ext_resource type="Texture2D" uid="uid://ndfjj3aewyj" path="res://Assets/Drops/Health Drop.png" id="4_i0kpi"]
+[ext_resource type="Texture2D" uid="uid://fhlqpm3iej3i" path="res://Assets/Drops/Luck Drop.png" id="5_grkkq"]
+[ext_resource type="Texture2D" uid="uid://csysrdhc6dx53" path="res://Assets/Drops/Red Gem Drop.png" id="6_27kx6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cmam"]
+size = Vector2(207, 205)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vclxb"]
+radius = 53.0
+height = 180.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jd00c"]
+radius = 41.0
+height = 115.966
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8ehs"]
+size = Vector2(95, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1t44"]
+size = Vector2(77.1811, 75.6047)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w8aj3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r0ysj")
+}],
+"loop": true,
+"name": &"Blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ilffd")
+}],
+"loop": true,
+"name": &"Green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_i0kpi")
+}],
+"loop": true,
+"name": &"Health",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_grkkq")
+}],
+"loop": true,
+"name": &"Luck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_27kx6")
+}],
+"loop": true,
+"name": &"Red",
+"speed": 5.0
+}]
+
+[node name="Treasure" type="Area2D"]
+scale = Vector2(0.2, 0.2)
+collision_layer = 8
+collision_mask = 96
+script = ExtResource("1_srp4w")
+
+[node name="Luck" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_4cmam")
+disabled = true
+
+[node name="Health" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vclxb")
+disabled = true
+
+[node name="Red" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jd00c")
+disabled = true
+
+[node name="Blue" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_x8ehs")
+disabled = true
+
+[node name="Green" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_d1t44")
+disabled = true
+
+[node name="Drops" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w8aj3")
+animation = &"Luck"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

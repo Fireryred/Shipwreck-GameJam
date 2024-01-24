@@ -24,6 +24,8 @@ func _on_spawn_rate_timeout():
 		prob = randi_range(1, 2)
 		if prob == 1:
 			_spawn_enemy(enemy_data.Tank)
+		else:
+			_spawn_enemy(enemy_data.Torpedo)
 	elif prob <= enemy_data.Torpedo.Frequency:
 		_spawn_enemy(enemy_data.Torpedo)
 	else:
