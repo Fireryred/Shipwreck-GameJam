@@ -1,8 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://d24vtfoctcwll"]
+[gd_scene load_steps=16 format=3 uid="uid://d24vtfoctcwll"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_gfk5u"]
 [ext_resource type="Texture2D" uid="uid://cnc8oqf6jgiah" path="res://Assets/Menu/Menu Stick.png" id="2_rnovg"]
 [ext_resource type="Texture2D" uid="uid://dygs7x17u8wji" path="res://Assets/Menu/Button.png" id="3_b7rj0"]
+[ext_resource type="Texture2D" uid="uid://dn0dhsxjhpsm2" path="res://Assets/Menu/Title Main BG back.png" id="4_cu635"]
+[ext_resource type="Texture2D" uid="uid://0t3c62y2dedv" path="res://Assets/Menu/Title Main BG ship.png" id="5_6tuoh"]
+[ext_resource type="Texture2D" uid="uid://cyhertkfpc2l3" path="res://Assets/Menu/Title Main BG water.png" id="6_um3be"]
+
+[sub_resource type="Animation" id="Animation_u7yhl"]
+resource_name = "Water Move"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dlff2"]
+_data = {
+"Water Move": SubResource("Animation_u7yhl")
+}
 
 [sub_resource type="Animation" id="Animation_y3vpa"]
 resource_name = "Hover Credit"
@@ -101,6 +112,31 @@ Button/styles/normal = SubResource("StyleBoxEmpty_l3ybs")
 [node name="Main" type="Node2D"]
 script = ExtResource("1_gfk5u")
 
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -27.0
+offset_right = -24.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_dlff2")
+}
+
+[node name="TitleMainBgShip" type="Sprite2D" parent="CenterContainer"]
+texture = ExtResource("5_6tuoh")
+centered = false
+
+[node name="TitleMainBgWater" type="Sprite2D" parent="CenterContainer"]
+texture = ExtResource("6_um3be")
+centered = false
+
 [node name="MenuStick" type="Sprite2D" parent="."]
 position = Vector2(918.456, 373.775)
 scale = Vector2(0.339804, 0.339804)
@@ -167,6 +203,17 @@ grow_vertical = 2
 theme = SubResource("Theme_hgimh")
 text = "QUIT
 "
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="TitleMainBgBack" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-24, -27)
+scale = Vector2(0.35, 0.35)
+
+[node name="TitleMainBgBack2" type="Sprite2D" parent="ParallaxBackground/TitleMainBgBack"]
+position = Vector2(3571.43, 2214.29)
+scale = Vector2(2.85714, 2.85714)
+texture = ExtResource("4_cu635")
 
 [connection signal="mouse_entered" from="MenuStick/Play Button/Play" to="." method="_on_play_mouse_entered"]
 [connection signal="mouse_exited" from="MenuStick/Play Button/Play" to="." method="_on_play_mouse_exited"]
