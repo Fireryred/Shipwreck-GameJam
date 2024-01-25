@@ -1,7 +1,7 @@
 extends Node
 
 var playerHp := 100
-var wave := 1
+var wave := 10
 var score := 0
 
 func _reset():

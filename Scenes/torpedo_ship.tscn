@@ -1,7 +1,44 @@
-[gd_scene load_steps=8 format=3 uid="uid://ldocbiq77txa"]
+[gd_scene load_steps=11 format=3 uid="uid://ldocbiq77txa"]
 
 [ext_resource type="Script" path="res://Script/torpedo_ship.gd" id="1_6hmtv"]
 [ext_resource type="Texture2D" uid="uid://b8t35tn71qq82" path="res://Assets/Enemy Ship Medium.png" id="2_jvd12"]
+
+[sub_resource type="Animation" id="Animation_5dr6f"]
+resource_name = "Laser"
+length = 0.60001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [10.0, 30.0, 60.0, 10.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_cjqbk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pgr5q"]
+_data = {
+"Laser": SubResource("Animation_5dr6f"),
+"RESET": SubResource("Animation_cjqbk")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5o0lh"]
 atlas = ExtResource("2_jvd12")
@@ -39,25 +76,36 @@ radius = 100.0
 height = 2700.0
 
 [node name="TorpedoShip" type="CharacterBody2D"]
-rotation = 4.71239
 scale = Vector2(0.2, 0.2)
 collision_mask = 0
 script = ExtResource("1_6hmtv")
 max_speed = 1000
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Indicator")
+libraries = {
+"": SubResource("AnimationLibrary_pgr5q")
+}
+
+[node name="Indicator" type="Line2D" parent="."]
+scale = Vector2(1, 1)
+points = PackedVector2Array(0, 0, 10000, 0)
+default_color = Color(0, 0, 0, 1)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_8ljxh")
 animation = &"Idle"
+offset = Vector2(-125, 0)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-120, -5)
 rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_k27uq")
 
 [node name="TorpedoHitbox" type="Area2D" parent="."]
+position = Vector2(128.82, 0)
 collision_layer = 0
 monitorable = false
 
@@ -73,7 +121,6 @@ collision_mask = 4
 [node name="CollisionShapeD2" type="CollisionShape2D" parent="TorpedoHurtbox"]
 light_mask = 0
 visibility_layer = 2
-position = Vector2(-120, -5)
 rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_k27uq")
