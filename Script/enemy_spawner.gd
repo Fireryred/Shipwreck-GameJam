@@ -17,6 +17,9 @@ var enemy_data := {
 		"Frequency":25 }#original:25
 	,}
 
+var length := DisplayServer.window_get_size().x + 160
+var height := DisplayServer.window_get_size().y + 160
+
 var wave = Game.wave
 
 func _on_spawn_rate_timeout():
@@ -34,9 +37,9 @@ func _on_spawn_rate_timeout():
 	get_node("SpawnRate").wait_time = (randf_range(1, 2)) / (wave * .5)
 	
 func _spawn_enemy(enemy: Dictionary):
-	var enemy_position = Vector2(randf_range(-124 ,1276), randf_range(-124, 772))
+	var enemy_position = Vector2(randf_range(-124 ,length), randf_range(-124, height))
 	
-	while enemy_position.x < 1152 and enemy_position.x > 0 and enemy_position.y < 1152 and enemy_position.y > 0:
+	while enemy_position.x < length and enemy_position.x > 0 and enemy_position.y < height and enemy_position.y > 0:
 		enemy_position = Vector2(randf_range(-124 ,1276), randf_range(-124, 772))
 	
 	var enemy_instance = enemy.Scene.instantiate()

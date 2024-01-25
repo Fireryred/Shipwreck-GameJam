@@ -5,4 +5,4 @@ extends Label
 
 func _process(delta):
 	text = str(int(wave_timer.time_left))
-	wave_label.text = str(Game.wave)
+	wave_label.text = "Wave: " + str(Game.wave) 

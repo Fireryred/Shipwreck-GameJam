@@ -54,7 +54,7 @@ func _switch():
 		Cannon.visible = true
 
 func _start_wave():
-	WaveTimer.wait_time = min((300 * (Game.wave * .1)), 180)
+	WaveTimer.wait_time = min((180 * (Game.wave/10)), 180)
 	WaveTimer.start()
 
 func _on_wave_timer_timeout():
