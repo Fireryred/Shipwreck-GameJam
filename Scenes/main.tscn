@@ -1,19 +1,103 @@
-[gd_scene load_steps=18 format=3 uid="uid://d24vtfoctcwll"]
+[gd_scene load_steps=22 format=3 uid="uid://d24vtfoctcwll"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_gfk5u"]
 [ext_resource type="Texture2D" uid="uid://cnc8oqf6jgiah" path="res://Assets/Menu/Menu Stick.png" id="2_rnovg"]
 [ext_resource type="Texture2D" uid="uid://dygs7x17u8wji" path="res://Assets/Menu/Button.png" id="3_b7rj0"]
 [ext_resource type="Texture2D" uid="uid://dn0dhsxjhpsm2" path="res://Assets/Menu/Title Main BG back.png" id="4_cu635"]
+[ext_resource type="Texture2D" uid="uid://rxewtuqoqul0" path="res://Assets/Menu/Title Name.png" id="4_lfmqa"]
 [ext_resource type="Texture2D" uid="uid://0t3c62y2dedv" path="res://Assets/Menu/Title Main BG ship.png" id="5_6tuoh"]
 [ext_resource type="Script" path="res://Script/menu_cloud_parallax.gd" id="6_ayvq6"]
 [ext_resource type="Texture2D" uid="uid://cyhertkfpc2l3" path="res://Assets/Menu/Title Main BG water.png" id="6_um3be"]
 
 [sub_resource type="Animation" id="Animation_u7yhl"]
 resource_name = "Water Move"
+length = 0.80001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleMainBgWater:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(203.704, 114.815), Vector2(-222.222, 29.6296)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleMainBgShip:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-100, -237.037), Vector2(-181.481, -25.9259)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleMainBgWater:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0584909, -0.102586]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dlff2"]
 _data = {
 "Water Move": SubResource("Animation_u7yhl")
+}
+
+[sub_resource type="Animation" id="Animation_5mob4"]
+resource_name = "Enter Title"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.17, 0.17), Vector2(0.2, 0.2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.212813, -0.521589, -0.179619]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qetam"]
+_data = {
+"Enter Title": SubResource("Animation_5mob4")
 }
 
 [sub_resource type="Animation" id="Animation_y3vpa"]
@@ -58,6 +142,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_sg5gj"]
 resource_name = "Hover Quit"
+length = 0.40001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -65,10 +150,10 @@ tracks/0/path = NodePath("Quit Button:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.4001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(7.48755, 468.579), Vector2(481.289, 536.265), Vector2(749.091, 674.58), Vector2(-2408.61, -673.256), Vector2(-3535.73, -1503.15)]
+"values": [Vector2(7.48755, 468.579), Vector2(481.289, 536.265), Vector2(749.091, 674.58), Vector2(-2408.61, -673.256), Vector2(-4109.6, -2004.39), Vector2(-3927.38, -1751.81)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -107,17 +192,20 @@ cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/200/0 = Vector2(0, 0)
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y1lbx"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l3ybs"]
 
 [sub_resource type="Theme" id="Theme_hgimh"]
 default_font_size = 200
 Button/fonts/font = SubResource("FontFile_064dy")
+Button/styles/hover = SubResource("StyleBoxEmpty_y1lbx")
 Button/styles/normal = SubResource("StyleBoxEmpty_l3ybs")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_gfk5u")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Background" type="CenterContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -127,24 +215,38 @@ offset_right = -24.0
 offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.27, 0.27)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
 libraries = {
 "": SubResource("AnimationLibrary_dlff2")
 }
 
-[node name="TitleMainBgShip" type="Sprite2D" parent="CenterContainer"]
+[node name="TitleMainBgShip" type="Sprite2D" parent="Background"]
+position = Vector2(-100, -237.037)
 texture = ExtResource("5_6tuoh")
 centered = false
 
-[node name="TitleMainBgWater" type="Sprite2D" parent="CenterContainer"]
+[node name="TitleMainBgWater" type="Sprite2D" parent="Background"]
+position = Vector2(203.704, 114.815)
+rotation = 0.0584909
 texture = ExtResource("6_um3be")
 centered = false
 
+[node name="TitleName" type="Sprite2D" parent="."]
+position = Vector2(319, 161)
+rotation = -0.179619
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_lfmqa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TitleName"]
+libraries = {
+"": SubResource("AnimationLibrary_qetam")
+}
+
 [node name="MenuStick" type="Sprite2D" parent="."]
-position = Vector2(918.456, 373.775)
-scale = Vector2(0.339804, 0.339804)
+position = Vector2(913, 446)
+scale = Vector2(0.249272, 0.249272)
 texture = ExtResource("2_rnovg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStick"]
@@ -178,7 +280,7 @@ text = "PLAY"
 
 [node name="Credit Button" type="Sprite2D" parent="MenuStick"]
 position = Vector2(10.4303, -90.567)
-rotation = -0.1505
+rotation = -0.201718
 scale = Vector2(0.842, 0.842)
 texture = ExtResource("3_b7rj0")
 

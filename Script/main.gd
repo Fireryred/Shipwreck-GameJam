@@ -3,6 +3,17 @@ extends Node2D
 @onready var play_button_ui := $MenuStick/AnimationPlayer
 @onready var play_quit_ui := $MenuStick/QuitAnimation
 
+@onready var background_animation := $Background/AnimationPlayer
+@onready var title_animation := $TitleName/AnimationPlayer
+
+
+func _ready():
+	background_animation.play("Water Move")
+	title_animation.play("Enter Title")
+
+func _process(delta):
+	pass
+
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
 
