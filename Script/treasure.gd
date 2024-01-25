@@ -5,6 +5,8 @@ extends Node2D
 @onready var shoot_pos := $"../Ship/Cannon/ShootPosition"
 @onready var area := $Treasure
 
+@onready var drop_animation := $Drops/AnimationPlayer
+
 var direction := Vector2.ZERO 
 var is_detected := false
 
@@ -66,6 +68,7 @@ func _determine_drop():
 	elif (prob < drop_data.Blue.Frequency):
 		drop = drop_data.Blue
 		Type.play("Blue")
+	drop_animation.play("Water Bobbing")
 
 func _on_area_entered(area):
 	print(area.name)

@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=19 format=3 uid="uid://2icjmx6erfuf"]
+=======
+[gd_scene load_steps=21 format=3 uid="uid://2icjmx6erfuf"]
+>>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://joogv4uips5l" path="res://Scenes/ship.tscn" id="1_4tq6a"]
 [ext_resource type="Texture2D" uid="uid://dfd7pwdtnowvq" path="res://Assets/BG.png" id="3_6tga8"]
@@ -7,8 +11,11 @@
 [ext_resource type="Script" path="res://Script/wave.gd" id="4_4iy04"]
 [ext_resource type="Script" path="res://Script/luck_timer.gd" id="4_8j6cj"]
 [ext_resource type="PackedScene" uid="uid://bcrp0272lup7v" path="res://Scenes/enemy_spawner.tscn" id="5_7ekcb"]
+[ext_resource type="Script" path="res://Script/BG.gd" id="5_bun3p"]
 [ext_resource type="Texture2D" uid="uid://ctavufsl6lymh" path="res://Assets/HUD/Main Selector HUD.png" id="6_1h35x"]
+[ext_resource type="Texture2D" uid="uid://cm0r662vn6cl1" path="res://Assets/Effects/Wave Dark.png" id="6_aje25"]
 [ext_resource type="PackedScene" uid="uid://bbjg1sk31dtbl" path="res://Scenes/mouse.tscn" id="6_q5wnw"]
+[ext_resource type="Texture2D" uid="uid://dkifiy3gkjorp" path="res://Assets/Effects/Wave Light.png" id="7_2g2nk"]
 [ext_resource type="Texture2D" uid="uid://brtci50whgfrg" path="res://Assets/HUD/Second Selector HUD.png" id="7_duxrm"]
 [ext_resource type="Texture2D" uid="uid://c5vw2yog5gp1b" path="res://Assets/Controller and Key Prompts/Keyboard & Mouse/Dark/Q_Key_Dark.png" id="8_q18fi"]
 [ext_resource type="Script" path="res://Script/on_screen_button.gd" id="9_82xoy"]
@@ -132,6 +139,9 @@ horizontal_alignment = 1
 [node name="WaveTimer" type="Timer" parent="."]
 
 [node name="BG" type="ParallaxBackground" parent="."]
+scale = Vector2(0.34, 0.34)
+transform = Transform2D(0.34, 0, 0, 0.34, 0, 0)
+script = ExtResource("5_bun3p")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="BG"]
 motion_mirroring = Vector2(65, 65)
@@ -140,6 +150,24 @@ motion_mirroring = Vector2(65, 65)
 position = Vector2(1920, 1060)
 texture = ExtResource("3_6tga8")
 metadata/_edit_lock_ = true
+
+[node name="DarkWaveParallax" type="ParallaxLayer" parent="BG"]
+visible = false
+motion_scale = Vector2(3, 3)
+motion_mirroring = Vector2(3000, 0)
+
+[node name="WaveDark" type="Sprite2D" parent="BG/DarkWaveParallax"]
+position = Vector2(365, 448)
+texture = ExtResource("6_aje25")
+
+[node name="LightWaveParallax" type="ParallaxLayer" parent="BG"]
+visible = false
+motion_scale = Vector2(2, 2)
+motion_mirroring = Vector2(3000, 0)
+
+[node name="WaveLight" type="Sprite2D" parent="BG/LightWaveParallax"]
+position = Vector2(364, 495)
+texture = ExtResource("7_2g2nk")
 
 [node name="Ship" parent="." instance=ExtResource("1_4tq6a")]
 position = Vector2(956, 200)

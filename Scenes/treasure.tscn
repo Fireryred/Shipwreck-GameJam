@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvfr32c1d06lj"]
+[gd_scene load_steps=17 format=3 uid="uid://bvfr32c1d06lj"]
 
 [ext_resource type="Script" path="res://Script/treasure.gd" id="1_srp4w"]
 [ext_resource type="Texture2D" uid="uid://cba0ji3mlqfe4" path="res://Assets/Drops/Blue Gem Drop.png" id="2_r0ysj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ndfjj3aewyj" path="res://Assets/Drops/Health Drop.png" id="4_i0kpi"]
 [ext_resource type="Texture2D" uid="uid://fhlqpm3iej3i" path="res://Assets/Drops/Luck Drop.png" id="5_grkkq"]
 [ext_resource type="Texture2D" uid="uid://csysrdhc6dx53" path="res://Assets/Drops/Red Gem Drop.png" id="6_27kx6"]
+[ext_resource type="Texture2D" uid="uid://cyhmgfhwnunq0" path="res://Assets/Effects/water drop effect.png" id="7_ip0hp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w8aj3"]
 animations = [{
@@ -50,6 +51,99 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_1t6h7"]
+resource_name = "Water Bobbing"
+length = 0.90001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.36883, 1.36883), Vector2(1, 1), Vector2(1.11111, 1.11111)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:sprite_frames")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AnimatedSprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vjwxg"]
+_data = {
+"Water Bobbing": SubResource("Animation_1t6h7")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg7sd"]
+atlas = ExtResource("7_ip0hp")
+region = Rect2(0, 0, 284, 301)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4r26"]
+atlas = ExtResource("7_ip0hp")
+region = Rect2(284, 0, 284, 301)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8bgx"]
+atlas = ExtResource("7_ip0hp")
+region = Rect2(568, 0, 284, 301)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gb6aq"]
+atlas = ExtResource("7_ip0hp")
+region = Rect2(852, 0, 284, 301)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jug0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg7sd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4r26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8bgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gb6aq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_c7b5j"]
 radius = 130.384
 
@@ -58,14 +152,29 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("1_srp4w")
 
 [node name="Drops" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.18442, 1.18442)
 sprite_frames = SubResource("SpriteFrames_w8aj3")
-animation = &"Luck"
+animation = &"Blue"
+frame_progress = 0.0965657
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Drops"]
+libraries = {
+"": SubResource("AnimationLibrary_vjwxg")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_0jug0")
+frame = 3
 
 [node name="Treasure" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 96
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Treasure"]
 shape = SubResource("CircleShape2D_c7b5j")
+metadata/_edit_lock_ = true
 
 [connection signal="area_entered" from="Treasure" to="." method="_on_area_entered"]
