@@ -55,6 +55,7 @@ func _on_torpedo_hurtbox_area_entered(area):
 		is_hurt = true
 
 func _on_lifetime_timeout():
+	ship.score += 500
 	queue_free()
 
 func _spawn_treasure():

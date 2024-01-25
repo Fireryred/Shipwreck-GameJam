@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-@onready var anim = get_node("AnimatedSprite2D")
+@onready var ship = $"../Ship"
+@onready var anim = $AnimatedSprite2D
 @export var max_speed = 150
 @export_range(0, 10, 0.1) var drag_factor := 0.1
 
 var treasure
-var player
 var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
 var onCollide = false
@@ -15,9 +15,9 @@ func _ready():
 	anim.play("Idle")
 
 func _physics_process(delta):
-	player = get_node("../Ship")
+	ship = get_node("../Ship")
 	if !onCollide:
-		var direction = (player.position - self.position).normalized()
+		var direction = (ship.position - self.position).normalized()
 		
 		desired_velocity = direction * max_speed
 		
@@ -38,6 +38,7 @@ func _set_ship_state():
 		anim.play("Hurt2")
 	else:
 		_spawn_treasure()
+		ship.score += 100
 		queue_free()
 
 func _spawn_treasure():
