@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d24vtfoctcwll"]
+[gd_scene load_steps=18 format=3 uid="uid://d24vtfoctcwll"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_gfk5u"]
 [ext_resource type="Texture2D" uid="uid://cnc8oqf6jgiah" path="res://Assets/Menu/Menu Stick.png" id="2_rnovg"]
@@ -50,7 +50,13 @@ tracks/0/keys = {
 "values": [0.0, -0.124222, 0.0, 0.0311432]
 }
 
-[sub_resource type="Animation" id="Animation_0cjsn"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iuhne"]
+_data = {
+"Hover Credit": SubResource("Animation_y3vpa"),
+"Hover Play": SubResource("Animation_wujwt")
+}
+
+[sub_resource type="Animation" id="Animation_sg5gj"]
 resource_name = "Hover Quit"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -77,11 +83,9 @@ tracks/1/keys = {
 "values": [0.0, 0.847007, 2.97493, 4.98786]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_iuhne"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3itlo"]
 _data = {
-"Hover Credit": SubResource("Animation_y3vpa"),
-"Hover Play": SubResource("Animation_wujwt"),
-"Hover Quit": SubResource("Animation_0cjsn")
+"Hover Quit": SubResource("Animation_sg5gj")
 }
 
 [sub_resource type="FontFile" id="FontFile_064dy"]
@@ -148,6 +152,11 @@ libraries = {
 "": SubResource("AnimationLibrary_iuhne")
 }
 
+[node name="QuitAnimation" type="AnimationPlayer" parent="MenuStick"]
+libraries = {
+"": SubResource("AnimationLibrary_3itlo")
+}
+
 [node name="Play Button" type="Sprite2D" parent="MenuStick"]
 position = Vector2(-10.6353, -593.799)
 rotation = -0.118634
@@ -169,7 +178,7 @@ text = "PLAY"
 
 [node name="Credit Button" type="Sprite2D" parent="MenuStick"]
 position = Vector2(10.4303, -90.567)
-rotation = -0.201718
+rotation = -0.1505
 scale = Vector2(0.842, 0.842)
 texture = ExtResource("3_b7rj0")
 

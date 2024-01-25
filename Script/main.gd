@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var play_button_ui := $MenuStick/AnimationPlayer
+@onready var play_quit_ui := $MenuStick/QuitAnimation
 
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
@@ -12,18 +13,17 @@ func _on_quit_pressed():
 func _on_credits_pressed():
 	get_tree().change_scene_to_file("res://Scenes/dialogue.tscn")
 
-
 func _on_play_mouse_entered():
 	play_button_ui.play("Hover Play")
 
 func _on_play_mouse_exited():
-	play_button_ui.stop(true)
+	play_button_ui.stop(false)
 
 func _on_credits_mouse_entered():
 	play_button_ui.play("Hover Credit")
 
 func _on_credits_mouse_exited():
-	play_button_ui.stop(true)
+	play_button_ui.stop(false)
 
 func _on_quit_mouse_entered():
-	play_button_ui.play("Hover Quit")
+	play_quit_ui.play("Hover Quit")
