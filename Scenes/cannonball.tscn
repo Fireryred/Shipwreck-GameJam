@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwtcp0gqfk4ny" path="res://Assets/Cannon Ball.png" id="1_o0e3e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ofd6"]
-radius = 27.4874
+radius = 23.3333
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v0d7c"]
 radius = 24.0832

@@ -37,21 +37,23 @@ func _set_ship_state():
 		health -= 1
 		anim.play("Hurt2")
 	else:
-		_spawn_treasure()
-		ship.score += 100
 		queue_free()
 
 func _spawn_treasure():
+	ship.score += 100
 	var treasure_instance = treasure.instantiate()
 	treasure_instance.position = position
 	get_parent().add_child(treasure_instance, true)
 
 func _on_tank_hitbox_body_entered(body):
 	if body.name == "Ship":
-		onCollide = true
+		#onCollide = true
+		velocity = -velocity.normalized() * 500
+		_set_ship_state()
 		body.health -= 5*health
 
 func _on_tank_hurtbox_area_entered(area):
+	_spawn_treasure()
 	_set_ship_state()
 
 func _on_tank_hitbox_area_exited(area):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://2icjmx6erfuf"]
+[gd_scene load_steps=19 format=3 uid="uid://2icjmx6erfuf"]
 
 [ext_resource type="PackedScene" uid="uid://joogv4uips5l" path="res://Scenes/ship.tscn" id="1_4tq6a"]
 [ext_resource type="Texture2D" uid="uid://dfd7pwdtnowvq" path="res://Assets/BG.png" id="3_6tga8"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Script/on_screen_button.gd" id="9_82xoy"]
 [ext_resource type="Texture2D" uid="uid://yyjhiymlxhy0" path="res://Assets/HUD/Cannon Select HUD.png" id="9_b3uhk"]
 [ext_resource type="Texture2D" uid="uid://bo5ysiy74wuev" path="res://Assets/HUD/Hook Select HUD.png" id="10_r6vy6"]
+[ext_resource type="PackedScene" uid="uid://cujodbk08u3b5" path="res://Scenes/pause.tscn" id="15_usjs8"]
 
 [sub_resource type="GDScript" id="GDScript_tgxmn"]
 script/source = "extends Node2D
@@ -24,7 +25,7 @@ script/source = "extends Node2D
 @onready var WaveTimer := $WaveTimer
 
 var cursor := load(\"res://Assets/Cannon Cursor 39.png\")
-var is_hook = false
+var is_hook := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,7 +43,6 @@ func _process(delta):
 func _unhandled_input(event):
 	if event.is_action_pressed(\"key_q\"):
 		_switch()
-		
 
 func _switch():
 	is_hook = !is_hook
@@ -69,6 +69,7 @@ size = Vector2(232, 892)
 size = Vector2(1624, 312)
 
 [node name="World" type="Node2D"]
+process_mode = 1
 script = SubResource("GDScript_tgxmn")
 
 [node name="HpBar" type="ProgressBar" parent="."]
@@ -211,6 +212,20 @@ texture = ExtResource("10_r6vy6")
 position = Vector2(268, 256)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("9_b3uhk")
+
+[node name="Pause" parent="." instance=ExtResource("15_usjs8")]
+layout_direction = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 576.0
+offset_top = 324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="QKeyDark/Timer" to="QKeyDark" method="_on_timer_timeout"]

@@ -26,13 +26,13 @@ func _physics_process(delta):
 		position += direction * speed * delta
 		
 func _on_hook_hurtbox_area_entered(area):
-	if has_exited_ship:
+	if area.name == "Treasure":
+		Status.play("Close")
+		is_retracted = true
+	elif has_exited_ship or is_retracted:
 		if (area.name == "ShipCollection"):
 			get_parent().is_delay_over = true
 			queue_free()
-		else:
-			Status.play("Close")
-			is_retracted = true
 
 func _on_duration_timeout():
 	is_retracted = true

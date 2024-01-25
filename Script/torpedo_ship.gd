@@ -55,10 +55,10 @@ func _on_torpedo_hurtbox_area_entered(area):
 		is_hurt = true
 
 func _on_lifetime_timeout():
-	ship.score += 500
 	queue_free()
 
 func _spawn_treasure():
+	ship.score += 500
 	var treasure_instance = treasure.instantiate()
 	treasure_instance.position = position
 	get_parent().add_child(treasure_instance, true)

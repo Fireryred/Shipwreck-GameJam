@@ -3,6 +3,7 @@ extends Node2D
 @onready var Type := $Drops
 @onready var ship := $"../Ship"
 @onready var shoot_pos := $"../Ship/Cannon/ShootPosition"
+@onready var area := $Treasure
 
 var direction := Vector2.ZERO 
 var is_detected := false
@@ -42,6 +43,8 @@ func _ready():
 		queue_free()
 
 func _physics_process(delta):
+	if is_detected and area.has_overlapping_areas():
+		_on_collection()
 	if is_detected:
 		direction = (shoot_pos.global_position - position).normalized()
 		position += direction * 600 * delta
@@ -65,14 +68,17 @@ func _determine_drop():
 		Type.play("Blue")
 
 func _on_area_entered(area):
-	if (area.name == "HookHitbox"):
+	print(area.name)
+	if area.name == "HookHitbox":
 		is_detected = true
-	if is_detected:
-		if (area.name == "ShipCollection"):
-			if drop.Type == "Luck":
-				ship.is_lucky = true
-			elif drop.Type == "Health":
-				ship.health += 5
-			ship.drop = drop
-			ship._calculate_score()
-			queue_free()
+	if is_detected && area.name == "ShipCollection":
+		_on_collection()
+
+func _on_collection():
+	if drop.Type == "Luck":
+		ship.is_lucky = true
+	elif drop.Type == "Health":
+		ship.health += 5
+	ship.drop = drop
+	ship._calculate_score()
+	queue_free()
