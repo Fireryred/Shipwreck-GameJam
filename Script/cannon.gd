@@ -3,6 +3,7 @@ extends Node2D
 @onready var shoot_position := $ShootPosition
 @onready var cannon := $Cannon
 @onready var hook := $Hook
+@onready var cannon_animation := $ShootAnimation
 @export var cannon_firerate := .5
 
 const CANNON = "Cannon"
@@ -48,9 +49,11 @@ func _add_bullet(bullet_type: String):
 	if bullet_type == CANNON:
 		bullet = cannon_ball_scene.instantiate()
 		_spawn_bullet(bullet)
+		cannon_animation.play("Shooting")
 		_add_delay(cannon_firerate)
 	elif bullet_type == HOOK:
 		bullet = hook_scene.instantiate()
+		cannon_animation.play("Shooting")
 		_spawn_hook(bullet)
 		
 func _spawn_hook(bullet: Node2D):

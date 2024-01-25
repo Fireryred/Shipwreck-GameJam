@@ -88,9 +88,8 @@ libraries = {
 }
 
 [node name="Indicator" type="Line2D" parent="."]
-scale = Vector2(1, 1)
 points = PackedVector2Array(0, 0, 10000, 0)
-default_color = Color(0, 0, 0, 1)
+default_color = Color(0.968627, 0.113725, 0.0117647, 0.407843)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 3.14159
