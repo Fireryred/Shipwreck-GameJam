@@ -81,7 +81,6 @@ libraries = {
 
 [node name="Play Again" type="Sprite2D" parent="."]
 position = Vector2(962, 569)
-rotation = -0.0198156
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_pwtoj")
 

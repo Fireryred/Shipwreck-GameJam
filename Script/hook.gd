@@ -9,6 +9,7 @@ extends Node2D
 var direction := Vector2.ZERO
 var duration := 1
 var is_retracted := false
+var has_exited_ship := false
 
 func _ready():
 	Duration.wait_time = duration
@@ -25,12 +26,17 @@ func _physics_process(delta):
 		position += direction * speed * delta
 		
 func _on_hook_hurtbox_area_entered(area):
-	if (area.name == "ShipCollection"):
-		get_parent().is_delay_over = true
-		queue_free()
-	else:
-		Status.play("Close")
-		is_retracted = true
+	if has_exited_ship:
+		if (area.name == "ShipCollection"):
+			get_parent().is_delay_over = true
+			queue_free()
+		else:
+			Status.play("Close")
+			is_retracted = true
 
 func _on_duration_timeout():
 	is_retracted = true
+
+func _on_hook_hurtbox_area_exited(area):
+	if area.name == "ShipHurtbox":
+		has_exited_ship = true
