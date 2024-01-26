@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwugi3jjclgfx"]
+
+[ext_resource type="Script" path="res://Script/end_of_wave_screen.gd" id="1_2kjrp"]
+
+[node name="EndWave" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2kjrp")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = -11.0
+offset_right = 141.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Click to Continue to the 
+Next Wave..."
+horizontal_alignment = 1
+vertical_alignment = 1

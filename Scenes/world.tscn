@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://2icjmx6erfuf"]
+[gd_scene load_steps=22 format=3 uid="uid://2icjmx6erfuf"]
 
 [ext_resource type="PackedScene" uid="uid://joogv4uips5l" path="res://Scenes/ship.tscn" id="1_4tq6a"]
 [ext_resource type="Texture2D" uid="uid://dfd7pwdtnowvq" path="res://Assets/BG.png" id="3_6tga8"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://yyjhiymlxhy0" path="res://Assets/HUD/Cannon Select HUD.png" id="9_b3uhk"]
 [ext_resource type="Texture2D" uid="uid://bo5ysiy74wuev" path="res://Assets/HUD/Hook Select HUD.png" id="10_r6vy6"]
 [ext_resource type="PackedScene" uid="uid://cujodbk08u3b5" path="res://Scenes/pause.tscn" id="15_usjs8"]
+[ext_resource type="PackedScene" uid="uid://dwugi3jjclgfx" path="res://UI/end_of_wave_screen.tscn" id="18_vs1ww"]
 
 [sub_resource type="GDScript" id="GDScript_tgxmn"]
 script/source = "extends Node2D
@@ -25,6 +26,7 @@ script/source = "extends Node2D
 @onready var Hook := $HookSelectHud
 @onready var Ship := $Ship
 @onready var WaveTimer := $WaveTimer
+@onready var EndWave := $EndWave
 
 var bullet := load(\"res://Assets/Cannon Cursor 2 53.png\")
 var hook := load(\"res://Assets/Cannon Cursor 5 53.png\")
@@ -32,6 +34,7 @@ var is_hook := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	EndWave.visible = false
 	_start_wave()
 	Input.set_custom_mouse_cursor(bullet, Input.CURSOR_ARROW, Vector2(53/2, 54/2))
 	Cannon.visible = true
@@ -63,7 +66,9 @@ func _start_wave():
 	WaveTimer.start()
 
 func _on_wave_timer_timeout():
-	get_tree().change_scene_to_file(\"res://Scenes/card_select.tscn\")
+	get_tree().paused = true
+	EndWave.visible = true
+  
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0etpr"]
@@ -237,6 +242,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("9_b3uhk")
 
 [node name="Pause" parent="." instance=ExtResource("15_usjs8")]
+visible = false
 layout_direction = 1
 anchors_preset = 0
 anchor_left = 0.0
@@ -247,6 +253,18 @@ offset_left = 576.0
 offset_top = 324.0
 offset_right = 576.0
 offset_bottom = 324.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="EndWave" parent="." instance=ExtResource("18_vs1ww")]
+process_mode = 3
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 611.0
+offset_top = 215.0
+offset_right = 611.0
+offset_bottom = 215.0
 grow_horizontal = 1
 grow_vertical = 1
 

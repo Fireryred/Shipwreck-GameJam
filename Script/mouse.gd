@@ -15,14 +15,16 @@ func _input(event):
 		switch = not switch
 		stop()
 
+func _play_anim(name: String):
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	visible = true
+	play("Treasure") if name == "Treasure" else play("Enemy")
+	
 func _on_area_2d_area_entered(area):
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if switch and area.name == "Treasure":
-		visible = true
-		play("Treasure")
+		_play_anim(area.name)
 	elif not switch and area.name.contains("Hurtbox"):
-		visible = true
-		print(area)
+		_play_anim(area.name)
 
 func _on_area_2d_area_exited(area):
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
