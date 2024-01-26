@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d24vtfoctcwll"]
+[gd_scene load_steps=27 format=3 uid="uid://d24vtfoctcwll"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_gfk5u"]
 [ext_resource type="Texture2D" uid="uid://cnc8oqf6jgiah" path="res://Assets/Menu/Menu Stick.png" id="2_rnovg"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://0t3c62y2dedv" path="res://Assets/Menu/Title Main BG ship.png" id="5_6tuoh"]
 [ext_resource type="Script" path="res://Script/menu_cloud_parallax.gd" id="6_ayvq6"]
 [ext_resource type="Texture2D" uid="uid://cyhertkfpc2l3" path="res://Assets/Menu/Title Main BG water.png" id="6_um3be"]
+[ext_resource type="Texture2D" uid="uid://b3la7bqfa6kvo" path="res://Assets/Menu/Play.png" id="7_wutll"]
+[ext_resource type="Texture2D" uid="uid://d11sthjauu6uw" path="res://Assets/Menu/Credits.png" id="8_j3owi"]
+[ext_resource type="Texture2D" uid="uid://d1g3s2wn1rd73" path="res://Assets/Menu/Quit.png" id="9_b5x2q"]
 
 [sub_resource type="Animation" id="Animation_u7yhl"]
 resource_name = "Water Move"
@@ -192,6 +195,10 @@ cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/200/0 = Vector2(0, 0)
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ggynd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f6mjk"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y1lbx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l3ybs"]
@@ -199,6 +206,8 @@ cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 [sub_resource type="Theme" id="Theme_hgimh"]
 default_font_size = 200
 Button/fonts/font = SubResource("FontFile_064dy")
+Button/styles/disabled = SubResource("StyleBoxEmpty_ggynd")
+Button/styles/focus = SubResource("StyleBoxEmpty_f6mjk")
 Button/styles/hover = SubResource("StyleBoxEmpty_y1lbx")
 Button/styles/normal = SubResource("StyleBoxEmpty_l3ybs")
 
@@ -223,13 +232,10 @@ libraries = {
 }
 
 [node name="TitleMainBgShip" type="Sprite2D" parent="Background"]
-position = Vector2(-100, -237.037)
 texture = ExtResource("5_6tuoh")
 centered = false
 
 [node name="TitleMainBgWater" type="Sprite2D" parent="Background"]
-position = Vector2(203.704, 114.815)
-rotation = 0.0584909
 texture = ExtResource("6_um3be")
 centered = false
 
@@ -276,7 +282,11 @@ offset_bottom = -233.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_hgimh")
-text = "PLAY"
+
+[node name="Play Text" type="Sprite2D" parent="MenuStick/Play Button"]
+position = Vector2(27.2828, -1.53711)
+skew = -0.0118611
+texture = ExtResource("7_wutll")
 
 [node name="Credit Button" type="Sprite2D" parent="MenuStick"]
 position = Vector2(10.4303, -90.567)
@@ -295,7 +305,9 @@ offset_bottom = -233.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_hgimh")
-text = "CREDITS"
+
+[node name="Credits Text" type="Sprite2D" parent="MenuStick/Credit Button"]
+texture = ExtResource("8_j3owi")
 
 [node name="Quit Button" type="Sprite2D" parent="MenuStick"]
 position = Vector2(7.48755, 468.579)
@@ -313,8 +325,9 @@ offset_bottom = -233.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_hgimh")
-text = "QUIT
-"
+
+[node name="Quit Text" type="Sprite2D" parent="MenuStick/Quit Button"]
+texture = ExtResource("9_b5x2q")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(0.35, 0.35)
