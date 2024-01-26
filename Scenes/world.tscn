@@ -26,13 +26,14 @@ script/source = "extends Node2D
 @onready var Ship := $Ship
 @onready var WaveTimer := $WaveTimer
 
-var cursor := load(\"res://Assets/Cannon Cursor 39.png\")
+var bullet := load(\"res://Assets/Cannon Cursor 2 53.png\")
+var hook := load(\"res://Assets/Cannon Cursor 5 53.png\")
 var is_hook := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_start_wave()
-	Input.set_custom_mouse_cursor(cursor, Input.CURSOR_ARROW, Vector2(20, 20))
+	Input.set_custom_mouse_cursor(bullet, Input.CURSOR_ARROW, Vector2(53/2, 54/2))
 	Cannon.visible = true
 	Hook.visible = false
 
@@ -49,9 +50,11 @@ func _unhandled_input(event):
 func _switch():
 	is_hook = !is_hook
 	if is_hook:
+		Input.set_custom_mouse_cursor(hook, Input.CURSOR_ARROW, Vector2(53/2, 54/2))
 		Cannon.visible = false
 		Hook.visible = true
 	else:
+		Input.set_custom_mouse_cursor(bullet, Input.CURSOR_ARROW, Vector2(53/2, 54/2))
 		Hook.visible = false
 		Cannon.visible = true
 
@@ -167,8 +170,6 @@ texture = ExtResource("7_2g2nk")
 position = Vector2(956, 200)
 
 [node name="Mouse" parent="." instance=ExtResource("6_q5wnw")]
-visible = false
-visibility_layer = 3
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_7ekcb")]
 

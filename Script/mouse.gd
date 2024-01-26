@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+@onready var detect = $Area2D
+
 var switch := false
 
 func _ready():
@@ -11,12 +13,16 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("key_q"):
 		switch = not switch
-		play("Treasure") if switch else play("Enemy")
-		
+		stop()
 
 func _on_area_2d_area_entered(area):
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if switch and area.name == "Treasure":
+		visible = true
+		play("Treasure")
+	elif not switch and area.name.contains("Hurtbox"):
+		visible = true
+		print(area)
 
 func _on_area_2d_area_exited(area):
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

@@ -61,20 +61,21 @@ animations = [{
 }],
 "loop": true,
 "name": &"Treasure",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0dpgv"]
 radius = 9.05539
 
 [node name="Mouse" type="AnimatedSprite2D"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_mp5hp")
-animation = &"Treasure"
+animation = &"Enemy"
 script = ExtResource("2_pyrgb")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 10
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

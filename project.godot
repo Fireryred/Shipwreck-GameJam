@@ -19,7 +19,6 @@ config/icon="res://Assets/Cannon Ball.png"
 
 Game="*res://Global/Game.gd"
 Util="*res://Global/Util.gd"
-Mouse="res://Scenes/mouse.tscn"
 
 [display]
 
