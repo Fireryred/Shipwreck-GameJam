@@ -1,10 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://80bxfmcsdbvk"]
+[gd_scene load_steps=11 format=3 uid="uid://80bxfmcsdbvk"]
 
 [ext_resource type="Texture2D" uid="uid://bv4xnhbl6j6qu" path="res://Assets/Menu/Scroll.png" id="1_fj1jm"]
 [ext_resource type="Script" path="res://Script/card_selections.gd" id="1_gq7xp"]
-[ext_resource type="Texture2D" uid="uid://fhlqpm3iej3i" path="res://Assets/Drops/Luck Drop.png" id="1_hj7wc"]
-[ext_resource type="Texture2D" uid="uid://csysrdhc6dx53" path="res://Assets/Drops/Red Gem Drop.png" id="3_dn8l6"]
-[ext_resource type="Texture2D" uid="uid://ndfjj3aewyj" path="res://Assets/Drops/Health Drop.png" id="5_yhl4q"]
+[ext_resource type="Texture2D" uid="uid://dqnjahbmk0e75" path="res://Assets/Menu/SCORE.png" id="3_awxca"]
+[ext_resource type="Texture2D" uid="uid://okdm7cv6k74t" path="res://Assets/Menu/LUCK.png" id="4_v88cm"]
+[ext_resource type="Texture2D" uid="uid://kbxd8six2oti" path="res://Assets/Menu/HEALTH.png" id="5_m1oga"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pc2qg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mirdr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xgwet"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gygdg"]
+
+[sub_resource type="Theme" id="Theme_m5cps"]
+Button/styles/focus = SubResource("StyleBoxEmpty_pc2qg")
+Button/styles/hover = SubResource("StyleBoxEmpty_mirdr")
+Button/styles/normal = SubResource("StyleBoxEmpty_xgwet")
+Button/styles/pressed = SubResource("StyleBoxEmpty_gygdg")
 
 [node name="Card Selections" type="Control"]
 layout_mode = 3
@@ -43,23 +57,24 @@ offset_right = 163.0
 offset_bottom = 268.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_m5cps")
 
 [node name="Score UP" type="Sprite2D" parent="Scroll/Random Powerup"]
 visible = false
 position = Vector2(187, 268)
-scale = Vector2(2, 2)
-texture = ExtResource("3_dn8l6")
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("3_awxca")
 
 [node name="Luck UP" type="Sprite2D" parent="Scroll/Random Powerup"]
 visible = false
 position = Vector2(187, 268)
-scale = Vector2(1.22596, 1.22596)
-texture = ExtResource("1_hj7wc")
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("4_v88cm")
 
 [node name="HealthUp" type="Sprite2D" parent="Scroll/Random Powerup"]
 visible = false
 position = Vector2(187, 268)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_yhl4q")
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("5_m1oga")
 
 [connection signal="pressed" from="Scroll/Random Powerup" to="." method="_on_scroll_pressed"]
