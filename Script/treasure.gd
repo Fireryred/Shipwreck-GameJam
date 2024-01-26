@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var Type := $Drops
 @onready var ship := $"../Ship"
+@onready var collection = $"../Ship/Cannon/ShootPosition/ShipCollection"
 @onready var shoot_pos := $"../Ship/Cannon/ShootPosition"
 @onready var area := $Treasure
 
@@ -45,7 +46,7 @@ func _ready():
 		queue_free()
 
 func _physics_process(delta):
-	if is_detected and area.has_overlapping_areas():
+	if is_detected and area.overlaps_area(collection):
 		_on_collection()
 	if is_detected:
 		direction = (shoot_pos.global_position - position).normalized()

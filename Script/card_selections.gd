@@ -35,7 +35,6 @@ func _process(delta):
 	pass
 
 func _on_scroll_pressed():
-	print(type)
 	match type:
 		"score":
 			power_up.Score += 1

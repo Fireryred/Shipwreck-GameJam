@@ -152,7 +152,7 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("1_srp4w")
 
 [node name="Drops" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.18442, 1.18442)
+scale = Vector2(1.03704, 1.03704)
 sprite_frames = SubResource("SpriteFrames_w8aj3")
 animation = &"Blue"
 frame_progress = 0.0965657
@@ -163,9 +163,8 @@ libraries = {
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = SubResource("SpriteFrames_0jug0")
-frame = 3
+frame = 1
 
 [node name="Treasure" type="Area2D" parent="."]
 collision_layer = 8
