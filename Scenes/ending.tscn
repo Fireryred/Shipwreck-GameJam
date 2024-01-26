@@ -58,6 +58,7 @@ theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[center]Score: 
 "
+scroll_active = false
 
 [node name="Ending Text" type="RichTextLabel" parent="."]
 offset_top = 5.0
@@ -67,6 +68,7 @@ theme = SubResource("Theme_25l3d")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
 text = "[center]WHAT ENDING?"
+scroll_active = false
 shortcut_keys_enabled = false
 
 [node name="MenuStick" type="Sprite2D" parent="."]
