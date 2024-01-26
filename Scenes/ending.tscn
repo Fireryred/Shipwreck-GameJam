@@ -1,32 +1,114 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5degyare21tb"]
+[gd_scene load_steps=22 format=3 uid="uid://c5degyare21tb"]
 
 [ext_resource type="Texture2D" uid="uid://cnc8oqf6jgiah" path="res://Assets/Menu/Menu Stick.png" id="1_4p157"]
 [ext_resource type="Script" path="res://Script/ending.gd" id="1_8qllc"]
 [ext_resource type="Texture2D" uid="uid://dygs7x17u8wji" path="res://Assets/Menu/Button.png" id="1_pwtoj"]
+[ext_resource type="Texture2D" uid="uid://dn0dhsxjhpsm2" path="res://Assets/Menu/Title Main BG back.png" id="2_h8spn"]
+[ext_resource type="Texture2D" uid="uid://bn5cqshnf54by" path="res://Assets/Game Over/Game Over Back 1.png" id="3_0g3jj"]
+[ext_resource type="Texture2D" uid="uid://dx6nd1i3dd8w2" path="res://Assets/Game Over/Game Over Back 2.png" id="4_wgrje"]
+[ext_resource type="Texture2D" uid="uid://d05tp06703l3f" path="res://Assets/Game Over/Game Over Back 3.png" id="5_wqkut"]
+[ext_resource type="Texture2D" uid="uid://biwdc4s73mdep" path="res://Assets/Game Over/Game Over Text.png" id="8_o54ut"]
 
-[sub_resource type="Theme" id="Theme_25l3d"]
-
-[sub_resource type="Animation" id="Animation_cqbw2"]
-resource_name = "Button Hover"
-length = 0.30001
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_xyjig"]
+resource_name = "Game Over Drop"
+length = 1.00001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Play Again:rotation")
+tracks/0/path = NodePath("../Game Over Text:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, -0.0602549, 0.0, 0.0656629]
+"values": [Vector2(602, -224), Vector2(602, 118), Vector2(602, 101)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Menu Stick:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(958, 835), Vector2(958, 665), Vector2(958, 676)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Score:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Score:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-243, 220), Vector2(25, 220), Vector2(0, 220)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hyeh8"]
-_data = {
-"Button Hover": SubResource("Animation_cqbw2")
+[sub_resource type="Animation" id="Animation_xncx6"]
+resource_name = "Background Move"
+length = 1.00001
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver People:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(134.286, 442.857), Vector2(191.429, 474.286), Vector2(222.857, 385.714)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOver Wave:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(78, 379), Vector2(-34.2857, 411.429), Vector2(134.286, 340)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOver MC:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(65.7143, 508.571), Vector2(125.714, 494.286), Vector2(271.429, 585.714)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j56q3"]
+_data = {
+"Background Move": SubResource("Animation_xncx6"),
+"Game Over Drop": SubResource("Animation_xyjig")
+}
+
+[sub_resource type="Theme" id="Theme_25l3d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpv8r"]
 
@@ -46,21 +128,85 @@ Button/styles/hover = SubResource("StyleBoxEmpty_k3cch")
 Button/styles/normal = SubResource("StyleBoxEmpty_0k824")
 Button/styles/pressed = SubResource("StyleBoxEmpty_4iiuu")
 
+[sub_resource type="Animation" id="Animation_cqbw2"]
+resource_name = "Button Hover"
+length = 0.30001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu Stick/Play Again:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0602549, 0.0, 0.0656629]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hyeh8"]
+_data = {
+"Button Hover": SubResource("Animation_cqbw2")
+}
+
+[sub_resource type="Theme" id="Theme_1cyws"]
+RichTextLabel/colors/default_color = Color(0.00392157, 0.0156863, 0.180392, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.12549)
+RichTextLabel/colors/table_border = Color(1, 1, 1, 0.945098)
+
 [node name="Ending" type="Node2D"]
 script = ExtResource("1_8qllc")
 
-[node name="Score" type="RichTextLabel" parent="."]
-offset_left = -4.0
-offset_top = 211.0
-offset_right = 1148.0
-offset_bottom = 290.0
-theme_override_font_sizes/normal_font_size = 60
-bbcode_enabled = true
-text = "[center]Score: 
-"
-scroll_active = false
+[node name="BackGroundAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Ending Background")
+libraries = {
+"": SubResource("AnimationLibrary_j56q3")
+}
+
+[node name="BackGroundAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Ending Background")
+libraries = {
+"": SubResource("AnimationLibrary_j56q3")
+}
+
+[node name="Ending Background" type="Node2D" parent="."]
+position = Vector2(552, 214)
+scale = Vector2(0.35, 0.35)
+
+[node name="TitleMainBgBack" type="Sprite2D" parent="Ending Background"]
+position = Vector2(51.4286, 357.143)
+texture = ExtResource("2_h8spn")
+
+[node name="GameOver People" type="Sprite2D" parent="Ending Background"]
+position = Vector2(134.286, 442.857)
+texture = ExtResource("3_0g3jj")
+
+[node name="GameOver MC" type="Sprite2D" parent="Ending Background"]
+position = Vector2(65.7143, 508.571)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_wgrje")
+
+[node name="GameOver Wave" type="Sprite2D" parent="Ending Background"]
+position = Vector2(78, 379)
+texture = ExtResource("5_wqkut")
+
+[node name="Game Over Text" type="Node2D" parent="."]
+position = Vector2(602, -224)
+scale = Vector2(0.4, 0.4)
+
+[node name="Game Over Text Back" type="Sprite2D" parent="Game Over Text"]
+position = Vector2(-18, 34)
+scale = Vector2(1.84124, 1.14592)
+texture = ExtResource("1_pwtoj")
+
+[node name="GameOverText" type="Sprite2D" parent="Game Over Text"]
+position = Vector2(-16.0001, 21)
+scale = Vector2(1, 1)
+texture = ExtResource("8_o54ut")
 
 [node name="Ending Text" type="RichTextLabel" parent="."]
+visible = false
 offset_top = 5.0
 offset_right = 1150.0
 offset_bottom = 211.0
@@ -71,22 +217,20 @@ text = "[center]WHAT ENDING?"
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="MenuStick" type="Sprite2D" parent="."]
-position = Vector2(958, 668)
+[node name="Menu Stick" type="Node2D" parent="."]
+position = Vector2(958, 835)
 scale = Vector2(0.2, 0.2)
+
+[node name="MenuStick" type="Sprite2D" parent="Menu Stick"]
+scale = Vector2(1, 1)
 texture = ExtResource("1_4p157")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_hyeh8")
-}
-
-[node name="Play Again" type="Sprite2D" parent="."]
-position = Vector2(962, 569)
-scale = Vector2(0.2, 0.2)
+[node name="Play Again" type="Sprite2D" parent="Menu Stick"]
+position = Vector2(20, -495)
+scale = Vector2(1, 1)
 texture = ExtResource("1_pwtoj")
 
-[node name="Play Again Button" type="Button" parent="Play Again"]
+[node name="Play Again Button" type="Button" parent="Menu Stick/Play Again"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -99,6 +243,24 @@ grow_vertical = 2
 theme = SubResource("Theme_o84pw")
 text = "Play Again"
 
-[connection signal="mouse_entered" from="Play Again/Play Again Button" to="." method="_on_play_again_button_mouse_entered"]
-[connection signal="mouse_exited" from="Play Again/Play Again Button" to="." method="_on_play_again_button_mouse_exited"]
-[connection signal="pressed" from="Play Again/Play Again Button" to="." method="_on_play_again_button_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hyeh8")
+}
+
+[node name="Score" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -243.0
+offset_top = 220.0
+offset_right = 909.0
+offset_bottom = 299.0
+theme = SubResource("Theme_1cyws")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[center]Score: 
+"
+scroll_active = false
+
+[connection signal="mouse_entered" from="Menu Stick/Play Again/Play Again Button" to="." method="_on_play_again_button_mouse_entered"]
+[connection signal="mouse_exited" from="Menu Stick/Play Again/Play Again Button" to="." method="_on_play_again_button_mouse_exited"]
+[connection signal="pressed" from="Menu Stick/Play Again/Play Again Button" to="." method="_on_play_again_button_pressed"]

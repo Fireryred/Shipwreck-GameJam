@@ -3,9 +3,14 @@ extends Node2D
 @onready var play_again_button_ui := $AnimationPlayer
 @onready var score_ui := $Score
 
+@onready var background_play := $BackGroundAnimationPlayer
+@onready var background_characters := $BackGroundAnimation
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	background_play.play("Game Over Drop")
+	background_characters.play("Background Move")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

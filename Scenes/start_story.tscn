@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://dpuostnatri2k"]
+
+[ext_resource type="Texture2D" uid="uid://bnj7aa7ygufp7" path="res://Assets/Story/Background.png" id="1_vqvg2"]
+[ext_resource type="Texture2D" uid="uid://baybd2s22p4wv" path="res://Assets/Story/Ginal Story.png" id="2_k8x6g"]
+[ext_resource type="Texture2D" uid="uid://crn8dy3ujcaie" path="res://Assets/Story/Fishing start.png" id="3_4k5kv"]
+[ext_resource type="Texture2D" uid="uid://cephxtlbwprdi" path="res://Assets/Story/Hurrah Hay.png" id="4_wiayk"]
+[ext_resource type="Texture2D" uid="uid://drhyl4r74bh6c" path="res://Assets/Story/Hurrah.png" id="5_tx672"]
+[ext_resource type="Texture2D" uid="uid://cajn5478bvnfl" path="res://Assets/Story/OH NO PIRATE that.png" id="6_3xnox"]
+[ext_resource type="Texture2D" uid="uid://dkj2112ql1x75" path="res://Assets/Story/OH NO PIRATE.png" id="7_7rdb6"]
+[ext_resource type="Texture2D" uid="uid://du0h3yngb4ohs" path="res://Assets/Story/Ships are Everywhere.png" id="8_7vqu8"]
+[ext_resource type="Texture2D" uid="uid://d7an4v4pjh8q" path="res://Assets/Story/Stolen People.png" id="9_rfxrj"]
+[ext_resource type="Texture2D" uid="uid://nimm5641ds0f" path="res://Assets/Story/Story Flood Start.png" id="10_ok7xp"]
+[ext_resource type="Texture2D" uid="uid://d16x322vgmlo7" path="res://Assets/Story/You are captain now.png" id="11_ic4md"]
+
+[node name="StartStory" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 400.0
+offset_top = 177.0
+offset_right = 408.0
+offset_bottom = 185.0
+
+[node name="Story" type="Node2D" parent="."]
+position = Vector2(400, 177)
+scale = Vector2(0.31, 0.31)
+
+[node name="Background" type="Sprite2D" parent="Story"]
+position = Vector2(572, 459)
+texture = ExtResource("1_vqvg2")
+
+[node name="GinalStory" type="Sprite2D" parent="Story"]
+visible = false
+position = Vector2(403.333, 510)
+texture = ExtResource("2_k8x6g")
+
+[node name="FishingStart" type="Sprite2D" parent="Story"]
+visible = false
+position = Vector2(572, 459)
+texture = ExtResource("3_4k5kv")
+
+[node name="Hurra" type="Node2D" parent="Story"]
+visible = false
+position = Vector2(572, 459)
+scale = Vector2(1, 1)
+
+[node name="HurrahHay" type="Sprite2D" parent="Story/Hurra"]
+position = Vector2(89.2903, -652.549)
+scale = Vector2(1, 1)
+texture = ExtResource("4_wiayk")
+
+[node name="Hurrah" type="Sprite2D" parent="Story/Hurra"]
+scale = Vector2(1, 1)
+texture = ExtResource("5_tx672")
+
+[node name="PIRATE" type="Node2D" parent="Story"]
+visible = false
+position = Vector2(572, 459)
+scale = Vector2(1, 1)
+
+[node name="OhNoPirate" type="Sprite2D" parent="Story/PIRATE"]
+scale = Vector2(1, 1)
+texture = ExtResource("7_7rdb6")
+
+[node name="OhNoPirateThat" type="Sprite2D" parent="Story/PIRATE"]
+position = Vector2(631.226, -523.516)
+texture = ExtResource("6_3xnox")
+
+[node name="ShipsAreEverywhere" type="Sprite2D" parent="Story"]
+visible = false
+position = Vector2(572, 459)
+texture = ExtResource("8_7vqu8")
+
+[node name="StolenPeople" type="Sprite2D" parent="Story"]
+visible = false
+position = Vector2(572, 459)
+texture = ExtResource("9_rfxrj")
+
+[node name="StoryFloodStart" type="Sprite2D" parent="Story"]
+visible = false
+position = Vector2(572, 459)
+texture = ExtResource("10_ok7xp")
+
+[node name="YouAreCaptainNow" type="Sprite2D" parent="Story"]
+visible = false
+position = Vector2(572, 459)
+texture = ExtResource("11_ic4md")
