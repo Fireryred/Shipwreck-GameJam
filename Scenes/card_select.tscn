@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bp2lcr32kobp3"]
+[gd_scene load_steps=4 format=3 uid="uid://bp2lcr32kobp3"]
 
 [ext_resource type="Script" path="res://Script/card_select.gd" id="1_yrkpe"]
+[ext_resource type="Texture2D" uid="uid://dygs7x17u8wji" path="res://Assets/Menu/Button.png" id="2_ohk02"]
 [ext_resource type="PackedScene" uid="uid://80bxfmcsdbvk" path="res://Scenes/card_selections.tscn" id="2_wr3j7"]
 
 [node name="Card Select" type="Control"]
@@ -11,6 +12,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yrkpe")
+
+[node name="Button2" type="Sprite2D" parent="."]
+position = Vector2(651, 560)
+scale = Vector2(1.64826, 1.03359)
+texture = ExtResource("2_ohk02")
+
+[node name="Button" type="Sprite2D" parent="."]
+position = Vector2(549, 119)
+scale = Vector2(1.28384, 1.01666)
+texture = ExtResource("2_ohk02")
 
 [node name="1st Card" parent="." instance=ExtResource("2_wr3j7")]
 layout_mode = 1

@@ -4,6 +4,8 @@ extends Control
 @onready var LuckUP := $"Scroll/Random Powerup/Luck UP"
 @onready var HealthUP := $"Scroll/Random Powerup/HealthUp"
 
+@onready var scroll_animation := $ScrollAnimation
+
 var type := ""
 var hp := Game.playerHp
 var power_up := Game.power_up
@@ -46,3 +48,10 @@ func _on_scroll_pressed():
 		
 	Game._add_wave(hp)
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
+
+
+func _on_random_powerup_mouse_entered():
+	scroll_animation.play("Scroll Hover")
+
+func _on_random_powerup_mouse_exited():
+	scroll_animation.stop(true)

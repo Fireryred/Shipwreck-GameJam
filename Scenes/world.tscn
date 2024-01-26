@@ -28,6 +28,7 @@ script/source = "extends Node2D
 @onready var WaveTimer := $WaveTimer
 @onready var EndWave := $EndWave
 
+
 var bullet := load(\"res://Assets/Cannon Cursor 2 53.png\")
 var hook := load(\"res://Assets/Cannon Cursor 5 53.png\")
 var is_hook := false

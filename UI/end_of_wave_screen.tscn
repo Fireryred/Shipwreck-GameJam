@@ -1,6 +1,53 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwugi3jjclgfx"]
+[gd_scene load_steps=6 format=3 uid="uid://dwugi3jjclgfx"]
 
 [ext_resource type="Script" path="res://Script/end_of_wave_screen.gd" id="1_2kjrp"]
+[ext_resource type="Texture2D" uid="uid://bjee62df400qo" path="res://Assets/Rudder.png" id="2_ipnmm"]
+[ext_resource type="Texture2D" uid="uid://km8m4lwf8a2g" path="res://Assets/Ship Body.png" id="3_v7skt"]
+
+[sub_resource type="Animation" id="Animation_xe57q"]
+resource_name = "End Wave"
+length = 0.30001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Dark:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3221, 315), Vector2(1539, 315), Vector2(-479, 315)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_57vgj"]
+_data = {
+"End Wave": SubResource("Animation_xe57q")
+}
 
 [node name="EndWave" type="Control"]
 visible = false
@@ -29,3 +76,31 @@ text = "Click to Continue to the
 Next Wave..."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="EndWAVE NEXT SCREEN" type="AnimationPlayer" parent="."]
+root_node = NodePath("ship/ShipBody")
+libraries = {
+"": SubResource("AnimationLibrary_57vgj")
+}
+
+[node name="Dark" type="Panel" parent="EndWAVE NEXT SCREEN"]
+visible = false
+offset_left = -969.0
+offset_top = -660.0
+offset_right = 303.0
+offset_bottom = 50.0
+scale = Vector2(2.64, 2.64)
+
+[node name="ship" type="Node2D" parent="EndWAVE NEXT SCREEN"]
+visible = false
+position = Vector2(3221, 315)
+scale = Vector2(2.72, 2.72)
+
+[node name="Rudder" type="Sprite2D" parent="EndWAVE NEXT SCREEN/ship"]
+position = Vector2(180.515, 0)
+scale = Vector2(1, 1)
+texture = ExtResource("2_ipnmm")
+
+[node name="ShipBody" type="Sprite2D" parent="EndWAVE NEXT SCREEN/ship"]
+scale = Vector2(1, 1)
+texture = ExtResource("3_v7skt")
