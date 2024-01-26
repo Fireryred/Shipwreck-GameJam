@@ -9,11 +9,16 @@ extends CharacterBody2D
 var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
 
+
 var drop
+var power_up
 var max_health := Game.playerHp
 var health := Game.playerHp
 var score := Game.score
 var is_lucky := true
+
+func _ready():
+	power_up = Game.power_up
 
 func _physics_process(delta):
 	#get input
@@ -37,12 +42,12 @@ func _save_game():
 func _calculate_score():
 	if drop != null:
 		if drop.Type == "Luck":
-			luck_timer.wait_time = 3
+			luck_timer.wait_time = 3 + (power_up.Luck * .1)
 			luck_timer.start()
 		elif drop.Type == "Health":
 			health += max_health * .05
 		else:
-			score += drop.Score * (2 if is_lucky else 1)
+			score += (drop.Score + (power_up.Score * 200))* ((2 if is_lucky else 1) + power_up.Luck)
 
 func _on_luck_timer_timeout():
 	is_lucky = false

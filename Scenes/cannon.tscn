@@ -7,18 +7,6 @@
 
 [sub_resource type="Animation" id="Animation_fxwfl"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BoomAnimated2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
 
 [sub_resource type="Animation" id="Animation_73sde"]
 resource_name = "Shooting"
@@ -173,7 +161,6 @@ sprite_frames = SubResource("SpriteFrames_sf007")
 frame = 2
 
 [node name="Cannon" type="Sprite2D" parent="."]
-visible = false
 rotation = 3.14159
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_3x50v")
@@ -195,6 +182,7 @@ shape = SubResource("CircleShape2D_vjw5l")
 metadata/_edit_lock_ = true
 
 [node name="Hook" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-3, -6.82121e-13)
 rotation = 3.15037
 scale = Vector2(0.2, 0.2)

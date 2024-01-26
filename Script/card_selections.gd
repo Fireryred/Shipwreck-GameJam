@@ -1,21 +1,49 @@
-extends Node
+extends Control
 
-@onready var AttackUP := $"FirstScroll/Random Powerup/Attack UP"
-@onready var LuckUP := $"FirstScroll/Random Powerup/Luck UP"
+@onready var ScoreUP := $"Scroll/Random Powerup/Score UP"
+@onready var LuckUP := $"Scroll/Random Powerup/Luck UP"
+@onready var HealthUP := $"Scroll/Random Powerup/HealthUp"
 
-var rng = RandomNumberGenerator.new()
-var HP = Game.playerHp
+var type := ""
+var hp := Game.playerHp
+var power_up := Game.power_up
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	pass # Replace with function body.
+	_reset()
+	random_card()
 
-func random_card(number:int):
-	if number <= 70:
-		pass
-		
+func _reset():
+	ScoreUP.visible = false
+	LuckUP.visible = false
+	HealthUP.visible = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func random_card():
+	var prob = randi_range(1, 3)
+	_reset()
+	match prob:
+		1:
+			ScoreUP.visible = true
+			type = "score"
+		2:
+			LuckUP.visible = true
+			type = "luck"
+		3:
+			HealthUP.visible = true
+			type = "health"
+
 func _process(delta):
 	pass
+
+func _on_scroll_pressed():
+	print(type)
+	match type:
+		"score":
+			power_up.Score += 1
+		"luck":
+			power_up.Luck += 1
+		"health":
+			power_up.Health += 1
+			hp += 25
+		
+	Game._add_wave(hp)
+	get_tree().change_scene_to_file("res://Scenes/world.tscn")
