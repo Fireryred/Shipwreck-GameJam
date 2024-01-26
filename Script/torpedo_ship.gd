@@ -21,7 +21,6 @@ func _ready():
 	get_node("Lifetime").start()
 	angle = position.direction_to(ship.position)
 	anim.play("Laser")
-	
 
 func _physics_process(delta):
 	#Acceleration
@@ -32,10 +31,6 @@ func _physics_process(delta):
 	rotation = velocity.angle()
 	queue_redraw()
 	move_and_slide()
-
-func _set_marker():
-	pass
-
 
 func _on_torpedo_collision_body_entered(body):
 	if body.name == "Ship":

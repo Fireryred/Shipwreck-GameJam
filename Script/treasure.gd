@@ -72,7 +72,6 @@ func _determine_drop():
 	drop_animation.play("Water Bobbing")
 
 func _on_area_entered(area):
-	print(area.name)
 	if area.name == "HookHitbox":
 		is_detected = true
 	if is_detected && area.name == "ShipCollection":
